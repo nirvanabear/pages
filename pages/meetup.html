@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+
+        /* .link { padding: 0 30px; } */
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile1.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="homework1.css"> 
+
+    <link rel="shortcut icon" href="favicon-16x16.png">
+    <title>MeetUp Report</title>
+</head>
+<body class="grid">
+    <header class="grid-area grid-area-1">
+        <h1 style=text-align:center>Meetup Report</h1>
+    </header>
+
+    <aside class="grid-area grid-area-2">
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/homework1.html">Home</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/assignments.html">Assignments</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/meetup.html">MeetUp</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <section class="grid-area grid-area-3">
+        <figure>
+            <img class="screenshot" src="Screen_Shot_Meetup.jpeg" alt="old boat cartoon image">
+            <figcaption>WordPress Accessibility Meetup, 4/18/22
+            </figcaption>
+        </figure>
+        <a href="https://equalizedigital.com/web-accessible-html-forms-cam-beaudoin/" target="_blank" rel="noopener noreferr" class="link">Link to the archived recording of this Meetup session</a>
+        <article class="paragraph">
+            <p>
+                The meetup I attended covered the implementation and troubleshooting of accessibility in HTML forms. It was presented by the company <a href="https://equalizedigital.com" target="_blank" rel="noopener noreferr" class="link">Equalize Digital</a> that makes software which identifies accessibility issues with WordPress websites. Their guest speaker was <a href="https://www.cambeaudoin.com/" target="_blank" rel="noopener noreferr" class="link">Cam Beaudoin</a>, a consultant for businesses looking to improve the accessibility of their products. While the presentation was intended specifically for WordPress users, the talk covered a lot of best practices that were applicable to any web form.
+            </p>
+            <p>
+                According to Cam, around 38% of all accessibility audit issues result from forms. He suggested creating a plan which examines form development from the perspective of the user. For instance, while phone numbers are regularly required in forms, some deaf and hard of hearing people don't have phones, thereby excluding them. Also, some forms use placeholders as the only label for the field, since it's more streamlined looking, but once data is inputted, a screenreader won't be able to describe the field. While he strongly discouraged that approach, he emphasised the use of aria-labels on interactive elements to compensate for incomplete labeling. He also pointed out how critical focus indicators are for keyboard-only users as well as for those using screen readers.
+            </p>
+            
+                <figure id="floatright">
+                    <img src="tab_stop_tracing.png" height="200" alt="Tab stop tracing example">
+                    <figcaption>Tab stop tracing example</figcaption>
+                </figure>
+                <p>
+                Some topics, however, still had ample room for debate, like using asterisks to indicate required fields or the right trade-offs for mobile versions of websites. He provided links for a <a href="https://www.visionaustralia.org/services/digital-access/resources/colour-contrast-analyser" target="_blank" rel="noopener noreferr" class="link">Colour Contrast Analyser</a> and a <a href="https://toolness.github.io/accessible-color-matrix/" target="_blank" rel="noopener noreferr" class="link">Contrast Grid</a> as resources to help developers with their color choices for low vision or color blind users. For developers, he also recommended the <a href="https://chrome.google.com/webstore/detail/accessibility-insights-fo/pbjjkligggfmakdaogkfomddhfmpjeni?hl=en" target="_blank" rel="noopener noreferr" class="link">Accessibility Insights</a> plugin for Chrome, especially for its tab stop tracing, and he used the <a href="https://www.nvaccess.org/download/" target="_blank" rel="noopener noreferr" class="link">NVDA Screen Reader</a> during the presentation to check how well the forms he made during the presentation performed for accessibility.
+            </p>
+            <p>
+                The company Equalize Digital holds Meetups on Accessiblity about once a month, according to their page of <a href="https://equalizedigital.com/wordpress-accessibility-meetup/" target="_blank" rel="noopener noreferr" class="link">past event recordings</a>, covering topics ranging from typography and captioning to backend accessibility issues.
+            </p>
+        </article>
+    </section>
+    
+    <footer class="grid-area grid-area-4 footer">
+        <a href="mailto:gashwor1@mail.ccsf.edu" class="email">Contact me via email</a>
+
+        <details class="triangle">
+            <summary><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" class="copyright"/></a></summary>
+            CCSF CNIT132 Final Project by George Ashworth is licensed under a  is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+          </details>
+    </footer>
+
+</body>
+</html>
