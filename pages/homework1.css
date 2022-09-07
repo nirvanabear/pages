@@ -10,7 +10,7 @@ html { height: 100%; }
     grid-template-columns: 150px 1fr;
     grid-template-rows: 100px auto 140px;
 }
-
+/* minmax(330px, auto) */
 .grid-area {
     font-family: Helvetica, Arial, sans-serif;
     background-color: #c1d798;
@@ -66,4 +66,30 @@ button:focus { background: var(--links); outline: none !important; border-color:
 
 #floatright { margin: 2px 0 10px 10px;
     float: right; font-size: 90%;
+}
+
+#cardbox {
+    position: relative;
+    height: 330px;
+}
+
+#card1 {
+    position: absolute;
+    left: 80px;
+    top: 30px;
+    z-index: 30;
+}
+
+#card2 {
+    position: absolute;
+    left: 50px;
+    top: 60px;
+    z-index: 20;
+}
+
+#card3 {
+    position: absolute;
+    left: 20px;
+    top: 90px;
+    z-index: 10;
 }
