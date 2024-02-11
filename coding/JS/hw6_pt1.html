@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!-- George Ashworth -->
+<!-- 11/28/23 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Outputs rounding decimals to various precision and a rounded root.">
+    <meta property="og:title" content="Homework 6 Part 1">
+    <meta property="og:url" content="https://hills.ccsf.edu/~gashwor1/hw6_pt1.html">
+    <meta property="og:description" content="Outputs rounding decimals to various precision and a rounded root.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile1.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="homework1.css"> 
+
+    <script>
+        // Sets functionality after HTML is available.
+        document.addEventListener("DOMContentLoaded", function () {
+            const btn = document.getElementById("enter");
+            const reset = document.getElementById("clear");
+            const input_field = document.getElementById("user_input");
+
+
+            // Checks input format and outputs rounded and rooted numbers.
+            function round_and_root() {
+                var output = "";
+
+                const input_val = document.getElementById("user_input").value;
+
+                // Checks if input has 4 or more decimal places.
+                const regexPattern = /^\d*[.]\d{4,}$/
+
+                if ((regexPattern.test(input_val))) {
+
+                    num_val = parseFloat(input_val);
+                    num_round = Math.round(num_val);
+                    num_sqrt = Math.round(Math.sqrt(num_val));
+                    num_tenths = (Math.floor(num_val * 10 + .5) / 10).toFixed(1);
+	                num_100ths = (Math.floor(num_val * 100 + .5) / 100).toFixed(2);
+                    num_1000ths = (Math.floor(num_val * 1000 + .5) / 1000).toFixed(3);
+
+                    output += `<table>
+                    <tr><td>Original input:</td><td>${num_val}</td>
+                    <tr><td>Rounded to integer:</td><td>${num_round}</td></tr>
+                    <tr><td>Rounded square root:</td><td>${num_sqrt}</td></tr>
+                    <tr><td>Rounded to tenths:</td><td>${num_tenths}</td></tr>
+                    <tr><td>Rounded to hundredths:</td><td>${num_100ths}</td></tr>
+                    <tr><td>Rounded to thousandths:</td><td>${num_1000ths}<td/></tr>
+                    </table>`
+                    
+                    document.getElementById("display").innerHTML = output;
+                }
+
+                else {
+                    document.getElementById("display").innerHTML = "<p style='color:rgb(188, 11, 11);'>Error: Blank, non-numerical, or number with fewer than 4 decimal places.</p>";
+                }
+            }
+
+            // Clears input field and resets output.
+            function reset_page() {
+                document.getElementById("display").innerHTML = "";
+            }
+
+            // Sets button and text field action.
+            btn.addEventListener("click", round_and_root);
+            reset.addEventListener("click", reset_page);
+            input_field.addEventListener("keypress", function(event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    btn.click();
+                }
+            });
+        });
+    </script>
+
+    <link rel="shortcut icon" href="satellite.png">
+    <title>Homework 6 Part 1</title>
+</head>
+
+<body class="grid">
+    <header class="grid-area grid-area-1">
+        <h1 style=text-align:center>CNIT 133 Homework 6 Part 1</h1>
+    </header>
+
+    <aside class="grid-area grid-area-2">
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/index.html">Home</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw2.html">Homework 2</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3.html">Homework 3</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw4.html">Homework 4</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5.html">Homework 5</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw6.html">Homework 6</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7.html">Homework 7</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw8.html">Homework 8</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="grid-area grid-area-3">
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw6.html">homework 6 Main</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw6_pt2.html">homework 6 Part 2: Text Search</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw6_pt3.html">homework 6 Part 3: Phone Number Parser
+                </a></li>
+            </ul>
+        </nav>
+
+        <article>
+            <h2>Rounded and Rooted</h2><h3>With Various Degrees of Precision</h3>
+            <form name="root_finder">
+
+                <p><label for="user_input"><b>Please input a number with at least 4-decimal-place precision:</b></label></p>
+                <p><input type="text" id="user_input" size="20" placeholder="4-decimal-place number"></p>
+
+                <p><input type="button" id="enter" value="Process">
+                <input type="reset" id="clear" value="Clear"></p>
+
+                <p id="display" style="font-family: monospace;"></p>
+
+            </form>
+        </article>
+    </main>
+
+    <footer class="grid-area grid-area-4 footer">
+        <a href="mailto:gashwor1@mail.ccsf.edu" class="email">Contact me via email</a>
+
+        <details class="triangle">
+            <summary><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" class="copyright"></a></summary>
+            CCSF CNIT133 Homework by George Ashworth is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+          </details>
+    </footer>
+
+</body>
+</HTML>

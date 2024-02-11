@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!-- George Ashworth -->
+<!-- 11/7/23 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Portal for accessing US State Census data">
+    <meta property="og:title" content="Homework 5 Part 3">
+    <meta property="og:url" content="https://hills.ccsf.edu/~gashwor1/hw5_pt3.html">
+    <meta property="og:description" content="Portal for accessing US State Census data">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile1.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="homework1.css"> 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+
+    <script>
+
+        var census_array = [];
+        var state_choice;
+
+        $(document).ready(function(){
+            // Load census data from .csv file.
+            $.ajax({
+                url:"census_data.csv",
+                dataType:"text",
+                success:function(data)
+                {
+                    census_array = [];
+                    var list_of_newlines = data.split(/\r?\n|\r/);
+
+                    // Loop through each newline of the .csv file.
+                    for(var count = 0; count<list_of_newlines.length; count++) {
+                        var cell_data = list_of_newlines[count].split(",");
+                        census_array.push(cell_data);
+                    }
+                    // Verification of import from .csv file.
+                    console.log(census_array);
+                }
+            });
+
+            // Compares user entry to imported census data.
+            function state_match(value) {
+                var state_found = false;
+                for (let i=0; i<census_array.length; i++) {
+                        if (value.toLowerCase().trim() === census_array[i][0].toLowerCase().trim() || value.toLowerCase().trim() === census_array[i][1].toLowerCase().trim()) {
+                            state_choice = census_array[i];
+                            state_found = true;
+                            console.log("Match!");
+                            return state_found;}
+                }
+                return state_found;
+            }
+
+            // Uses comparison results to output data or error messages.
+            function process() {
+                var user_entry = document.getElementById("state_name").value;
+                var valid_state = state_match(user_entry);
+                if (valid_state) {
+                    var output = "<p><b>State Census Data:</b></p>";
+                    var keys = ["State abbr = ", "State Name = ", "Capital = ", "Population = "];
+                    for (let j=0; j<state_choice.length; j++) {
+                        if (isNaN(Number(state_choice[j]))) {
+                            output += "<p>" + keys[j] + state_choice[j] + "</p>";
+                        }
+                        else {
+                            output += "<p>" + keys[j] + Number(state_choice[j]).toLocaleString("en") + "</p>";
+                        }
+                    }
+                    document.getElementById("display").innerHTML = output;  
+                    document.getElementById("error").innerHTML = "";
+                }
+                else {
+                    document.getElementById("display").innerHTML = "";
+                    document.getElementById("error").innerHTML = "No census data available for this state. Please input another state.";                    
+                }
+            }
+
+            // Sets click functionality.
+            $("#enter").click(process);
+
+            // Allows hitting [enter] to process the user input.
+            const input_field = document.getElementById("state_name");
+            const btn = document.getElementById("enter");
+            input_field.addEventListener("keypress", function(event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    btn.click();
+                }
+            });
+
+        });
+    </script>
+
+    <link rel="shortcut icon" href="satellite.png">
+    <title>Homework 5 Part 3</title>
+</head>
+
+<body class="grid">
+    <header class="grid-area grid-area-1">
+        <h1 style=text-align:center>Homework 5 Part 3</h1>
+    </header>
+
+    <aside class="grid-area grid-area-2">
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/index.html">Home</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw2.html">Homework 2</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3.html">Homework 3</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw4.html">Homework 4</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5.html">Homework 5</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw6.html">Homework 6</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7.html">Homework 7</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw8.html">Homework 8</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="grid-area grid-area-3">
+
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5.html">Homework 5: Main</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5_pt1.html">Homework 5 Part 1: User Survey</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5_pt2.html">Homework 5 Part 2: Online Radio Stations</a></li>
+            </ul>
+        </nav>
+
+        <article>
+            <h2>Census Data for Selected States</h2>
+        </article>
+
+        <section>
+            <form id="census_request">
+
+                <p><label for="state_name"><b>Please enter a US State:</b></label></p>
+                <p><input type="text" id="state_name" size="10" placeholder="State Name"></p>
+                <br>
+
+                <p><input type="button" id="enter" value="Enter">
+                <input type="reset" id="clear" value="Clear"></p>
+        
+                <p id="display" style="font-family: monospace;"></p>
+                <p style="color: rgb(212, 14, 60);" id="error"></p>
+        
+            </form>
+
+        </section>
+    </main>
+
+    <footer class="grid-area grid-area-4 footer">
+        <a href="mailto:gashwor1@mail.ccsf.edu" class="email">Contact me via email</a>
+
+        <details class="triangle">
+            <summary><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" class="copyright"></a></summary>
+            CCSF CNIT133 Homework by George Ashworth is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+          </details>
+    </footer>
+
+</body>
+</HTML>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!-- George Ashworth -->
+<!-- 8/29/23 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Calculate sum and product of a sequence of integers taken at intervals.">
+    <meta property="og:title" content="Homework 4">
+    <meta property="og:url" content="https://hills.ccsf.edu/~gashwor1/hw4_pt1.html">
+    <meta property="og:description" content="Calculate sum and product of a sequence of integers taken at intervals.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile1.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="homework1.css"> 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+    <script>
+        $(document).ready(function(){
+
+            // Take integers at intervals from a range of numbers
+            // and finds the sum and the product.
+            var multiply1 = "The result of ";
+            var product1 = 1;
+            var add1 = "The result of ";
+            var sum1 = 0;
+            // Using var allows num to be used outside brackets
+            for (var num1 = 5; num1 < 25; num1 +=4) {
+                multiply1 += num1.toString() + " * ";
+                product1 *= num1;
+                add1 += num1.toString() + " + ";
+                sum1 += num1;
+            }
+            product1 *= num1;
+            sum1 += num1;
+            multiply1 += num1.toString() + " is... " + product1.toLocaleString();
+            add1 += num1.toString() + " is... " + sum1.toLocaleString();
+
+            const output1 = document.getElementById("calc1");
+            output1.textContent = multiply1 + "\r\n" + add1;
+
+            // Calculates sum and product from a second set of integers.
+            var multiply2 = "The result of ";
+            var product2 = 1;
+            var add2 = "The result of ";
+            var sum2 = 0;
+            var num2 = 3;
+            while (num2 < 18) {
+                multiply2 += num2.toString() + " * ";
+                product2 *= num2;
+                add2 += num2.toString() + " + ";
+                sum2 += num2;
+                num2 += 3;
+            }
+            product2 *= num2;
+            sum2 += num2;
+            multiply2 += num2.toString() + " is... " + product2.toLocaleString();
+            add2 += num2.toString() + " is... " + sum2.toLocaleString();
+
+            const output2 = document.getElementById("calc2");
+            output2.textContent = multiply2 + "\r\n" + add2;
+
+            // Makes the output draggable.
+            $(function() {
+                $("#calc1").draggable();
+                $("#calc2").draggable();
+                $("#everything").draggable();
+                $("#links").draggable();
+                $("#link1").draggable();
+                $("#link2").draggable();
+                $("#link3").draggable();
+                $("#title1").draggable();
+                $("#email").draggable();
+                $("#license").draggable();
+            })
+        });
+    </script>
+
+    <link rel="shortcut icon" href="satellite.png">
+    <title>Homework 4 Part 1</title>
+</head>
+
+<body class="grid" id="everything">
+    <header class="grid-area grid-area-1">
+        <h1 style=text-align:center id="title1">Homework 4 Part 1</h1>
+    </header>
+
+    <aside class="grid-area grid-area-2">
+        <nav>
+            <ul id="links">
+                <li><a href="https://hills.ccsf.edu/~gashwor1/index.html">Home</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw2.html">Homework 2</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3.html">Homework 3</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw4.html">Homework 4</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5.html">Homework 5</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw6.html">Homework 6</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7.html">Homework 7</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw8.html">Homework 8</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="grid-area grid-area-3">
+
+        <nav>
+            <ul>
+                <li id="link1"><a href="https://hills.ccsf.edu/~gashwor1/hw4.html">Homework 4 Main</a></li>
+                <li id="link2"><a href="https://hills.ccsf.edu/~gashwor1/hw4_pt2.html">Homework 4 Part 2: Short summary
+                </a></li>
+                <li id="link3"><a href="https://hills.ccsf.edu/~gashwor1/hw4_ec.html">Homework 4 Extra Credit: Short summary
+                </a></li>
+            </ul>
+        </nav>
+
+        <article>
+            <p id="calc1" style="white-space: pre;"></p>
+            <p id="calc2" style="white-space: pre;"></p>
+        </article>
+    </main>
+
+    <footer class="grid-area grid-area-4 footer">
+        <a href="mailto:gashwor1@mail.ccsf.edu" class="email" id="email">Contact me via email</a>
+
+        <details class="triangle" id="license">
+            <summary><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" class="copyright"/></a></summary>
+            CCSF CNIT133 Homework by George Ashworth is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+          </details>
+    </footer>
+
+</body>
+</HTML>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!-- George Ashworth -->
+<!-- 12/5/23 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Main page with hidden links and toggle reveal.">
+    <meta property="og:title" content="Homework 7">
+    <meta property="og:url" content="https://hills.ccsf.edu/~gashwor1/hw7.html">
+    <meta property="og:description" content="Main page with hidden links and toggle reveal.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile1.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="homework1.css"> 
+
+
+    <style>
+        .title {
+            background: url('open.png') no-repeat 0 11px;
+            padding: 10px 0 0 25px;
+            cursor: pointer;
+            font-size: 120%;
+            font-weight: bold;
+            list-style-type: none;
+        }
+        li.close {
+            background-image: url('close.png');
+        }
+        .answer {
+            margin-left: 50px;	
+        }
+        .grid {
+            grid-template-rows: 125px auto 140px;
+        }
+        .grid-area-3 { background-color:rgb(91, 48, 234); color:white }
+
+        .grid-area-3 a:link { color:white; }
+
+        .grid-area-3 a:visited { color:orange; }
+
+    </style>
+        
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        
+    <script>
+        $(document).ready(function() {
+            $('.answer').hide();
+            $('.title').click(function() { $(this).next('.answer').toggle()
+                if ($('.answer:visible').length == 0) {
+                    $(this).removeClass('close')
+                } 
+                else {
+                    $(this).addClass('close')
+                };
+            });
+        });
+    </script>
+
+
+    <link rel="shortcut icon" href="satellite.png">
+    <title>Homework 7</title>
+</head>
+
+<body class="grid">
+    <header class="grid-area grid-area-1">
+        <h1 style=text-align:center>CNIT 133 Homework 7 - Object Model and Event Model</h1>
+    </header>
+
+    <aside class="grid-area grid-area-2">
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/index.html">Home</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw2.html">Homework 2</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3.html">Homework 3</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw4.html">Homework 4</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5.html">Homework 5</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw6.html">Homework 6</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7.html">Homework 7</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw8.html">Homework 8</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="grid-area grid-area-3">
+        <div class="main">
+            <nav>
+                <ul>
+                    <li class="title">PART 1</li>
+                    <li class="answer">Clickable font and background options for a passage of text. <a href="https://hills.ccsf.edu/~gashwor1/hw7_pt1.html">Homework 7 Part 1</a></li>
+                    <li class="title">PART 2 </li>
+                    <li class="answer">Navigation bar demonstration. <a href="https://hills.ccsf.edu/~gashwor1/hw7_pt2.html">Homework 7 Part 2
+                    </a></li>
+                </ul>
+            </nav>
+        </div>
+        <article>
+            <h2>Hi!</h2><p>This will be homework assignment #7!</p>
+        </article>
+    </main>
+
+    <footer class="grid-area grid-area-4 footer">
+        <a href="mailto:gashwor1@mail.ccsf.edu" class="email">Contact me via email</a>
+
+        <details class="triangle">
+            <summary><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" class="copyright"></a></summary>
+            CCSF CNIT133 Homework by George Ashworth is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+          </details>
+    </footer>
+
+</body>
+</HTML>

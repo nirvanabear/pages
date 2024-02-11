@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<!-- George Ashworth -->
+<!-- 10/3/23 -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Form for calculating commission on sales.">
+    <meta property="og:title" content="Homework 3 Part 2">
+    <meta property="og:url" content="https://hills.ccsf.edu/~gashwor1/hw3_pt2.html">
+    <meta property="og:description" content="Form for calculating commission on sales.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile1.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="homework1.css"> 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+
+
+    <script>
+        
+        // TODO: find a CSV file uploader to allow the data below
+        // to be updated by using a spreadsheet.
+        // Eg: https://hills.ccsf.edu/~gashwor1/sales_data.csv
+        const p1 = 20.99;
+        const p2 = 12.75;
+        const p3 = 9.95;
+        const p4 = 35.89;
+        const percent = .09;
+        const base = 250;
+
+        $(document).ready(function(){
+            // Focus cursor at first field
+            $("#seller").focus();
+
+            // Refocus on first field when reset button clicked
+            $(":reset").click(function () {                       
+                $("#seller").focus();
+            });
+
+            // Display current item pricing in table
+            $("#price1").text("$" + p1);
+            $("#price2").text("$" + p2);
+            $("#price3").text("$" + p3);
+            $("#price4").text("$" + p4);
+
+            // Displays error message if form input is not a number
+            $("#myform").validate({
+                // Rules for each input item
+                rules: {
+                    num1: { required: true, number: true},
+                    num2: { required: true, number: true},
+                    num3: { required: true, number: true},
+                    num4: { required: true, number: true},
+                },
+                messages: { 
+                    num1: " Please enter a number",
+                    num2: " Please enter a number",
+                    num3: " Please enter a number",
+                    num4: " Please enter a number",
+                },
+                errorPlacement: function(error, element) {
+                    if ( element.is(":text")) {
+                        error.appendTo( element.parent());
+                    }
+                    else {
+                        error.insertAfter(element);
+                    }
+                }
+            });
+
+            // Set click functionality 
+            $("#process").click(process);
+        });
+        
+        // Process the calculation and display of commission
+        function process() {        
+            if ($("#myform").valid()) {
+        
+                // define variables	
+                var n1, n2, n3, n4, t1, t2, t3, t4;
+        
+                // get input number value from form using getElementById
+                n1 = parseInt(document.getElementById("num1").value);
+                n2 = parseInt(document.getElementById("num2").value);
+                n3 = parseInt(document.getElementById("num3").value);
+                n4 = parseInt(document.getElementById("num4").value);
+        
+                t1 = p1 * n1;
+                t2 = p2 * n2;
+                t3 = p3 * n3;
+                t4 = p4 * n4;
+
+                total_qty = n1 + n2 + n3 + n4;
+                total_val = t1 + t2 + t3 + t4;
+                total_wage = (total_val * percent) + base;
+
+                $("#qty1").val(n1);
+                $("#qty2").val(n2);
+                $("#qty3").val(n3);
+                $("#qty4").val(n4);
+
+                $("#val1").val(t1.toFixed(2));
+                $("#val2").val(t2.toFixed(2));
+                $("#val3").val(t3.toFixed(2));
+                $("#val4").val(t4.toFixed(2));
+
+                $("#qty_total").val(total_val.toFixed(2));
+                $("#val_total").val(total_wage.toFixed(2));
+
+            }
+            else {
+                $("#error").text("Invalid input. Please input integer values.");
+            }
+
+            $( function() {
+                $( document ).tooltip();
+            } );
+        }
+
+
+
+    </script>
+
+
+    <link rel="shortcut icon" href="satellite.png">
+    <title>Homework 3 Part 2</title>
+</head>
+
+<body class="grid">
+    <header class="grid-area grid-area-1">
+        <h1 style=text-align:center>Homework 3 Part 2</h1>
+    </header>
+
+    <aside class="grid-area grid-area-2">
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/index.html">Home</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw2.html">Homework 2</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3.html">Homework 3</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw4.html">Homework 4</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5.html">Homework 5</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw6.html">Homework 6</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7.html">Homework 7</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw8.html">Homework 8</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="grid-area grid-area-3">
+
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3.html">Homework 3 Main</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3_pt1.html">Homework 3 Part 1
+                </a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3_ec.html">Homework 3 Extra Credit
+                </a></li>
+            </ul>
+        </nav>
+
+
+        <article>
+            <h3>Commission Calculator</h3>
+            <form name="myform" id="myform">
+
+                <label for="seller">Seller's Name: </label>
+                <input type="text" placeholder="Full name" name="seller" id="seller" size="30" title="Please make sure that the salesperson's name is spelled correctly">
+                <p></p>
+                <p></p>
+
+                <p style="color: red;" id="error"></p>
+                <p>For each item, type the quantity sold by the seller</p>
+
+                <table>
+                    <tr>
+                    <td>Item 1:</td>
+                    <td><input type="number" name="num1" id="num1" size="10"></td>
+                    </tr>
+                    
+                    <tr>
+                    <td>Item 2:</td>
+                    <td><input type="number" name="num2" id="num2" size="10"></td>
+                    </tr>
+        
+                    <tr>
+                    <td>Item 3:</td>
+                    <td><input type="number" name="num3" id="num3" size="10"></td>
+                    </tr>
+
+                    <tr>
+                    <td>Item 4:</td>
+                    <td><input type="number" name="num4" id="num4" size="10"></td>
+                    </tr>
+                </table>
+
+                <p><input type="button" id="process" value="Submit"></p>
+                <p><input type="reset" id="clear" value="Clear Form"></p>
+
+                <table> 
+                    <tr>
+                    <td><b>Item #</b></td><td><b>Price</b></td><td><b>Qty Sold</b></td><td><b>Total $</b></td>
+                    </tr>
+
+                    <tr>
+                    <td>1</td>
+                    <td id="price1"></td>
+                    <td><input type="text" readonly id="qty1" size="10"></td>
+                    <td><input type="text" readonly id="val1" size="10"></td>
+                    </tr>
+                    
+                    <tr>
+                    <td>2</td>
+                    <td id="price2"></td>
+                    <td><input type="text" readonly id="qty2" size="10"></td>
+                    <td><input type="text" readonly id="val2" size="10"></td>
+                    </tr>
+        
+                    <tr>
+                    <td>3</td>
+                    <td id="price3"></td>
+                    <td><input type="text" readonly id="qty3" size="10"></td>
+                    <td><input type="text" readonly id="val3" size="10"></td>
+                    </tr>
+
+                    <tr>
+                    <td>4</td>
+                    <td id="price4"></td>
+                    <td><input type="text" readonly id="qty4" size="10"></td>
+                    <td><input type="text" readonly id="val4" size="10"></td>
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                    <td>Total Amount Sold</td><td></td><td></td>
+                    <td><input type="text" readonly style="text-align:right;" id="qty_total" size="10"></td>
+                    </tr>
+
+                    <tr>
+                    <td>Total Weekly Earnings</td><td></td><td></td>
+                    <td><input type="text" readonly style="text-align:right;" id="val_total" size="10"></td>
+                    </tr>
+                </table>
+    
+                <br><br>
+            </form>
+
+        </article>
+    </main>
+
+    <footer class="grid-area grid-area-4 footer">
+        <a href="mailto:gashwor1@mail.ccsf.edu" class="email">Contact me via email</a>
+
+        <details class="triangle">
+            <summary><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" class="copyright"/></a></summary>
+            CCSF CNIT133 Homework by George Ashworth is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+          </details>
+    </footer>
+
+</body>
+</HTML>

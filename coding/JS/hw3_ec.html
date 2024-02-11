@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!-- George Ashworth -->
+<!-- 10/3/23 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Multiplication tutor.">
+    <meta property="og:title" content="Homework 3 Extra Credit">
+    <meta property="og:url" content="https://hills.ccsf.edu/~gashwor1/hw3_ec.html">
+    <meta property="og:description" content="Multiplication tutor.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile1.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="homework1.css"> 
+
+    <script>
+        var global_ans;
+
+        // Creates random integers from 0-9
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+        }
+
+        // Sets functionality after HTML is available
+        document.addEventListener("DOMContentLoaded", function () {
+            const btn = document.getElementById("yes");
+            const tryIt = document.getElementById("intro");
+            var num = document.getElementById("question");
+            var bBlock = document.getElementById("bBlock");
+            const take = document.getElementById("answer");
+            const show = document.getElementById("output");
+            const reply = document.getElementById("response");
+            const done = document.getElementById("no");
+
+            // Displays a new instance of a math problem
+            function mathProblem() {
+                let int1 = getRandomInt(0, 10);
+                let int2 = getRandomInt(0, 10);
+                num.textContent = int1 + " × " + int2 + " = ";
+                global_ans = int1 * int2;
+                bBlock.style.display = "none";
+                reply.textContent = "";
+                take.value = "";
+                take.focus();
+                show.textContent = "";
+            }
+
+            // Sets the buttons
+            btn.addEventListener("click", mathProblem);
+            done.addEventListener("click", end);
+
+            mathProblem();
+            bBlock.style.display = "none";
+
+            take.addEventListener("input", updateValue);
+
+            // Issues response for attempts to answer math question
+            function updateValue(e) {
+                show.textContent = e.target.value;
+                if (e.target.value == global_ans) {
+                    reply.textContent = "Good job! Click yes to go again! Click no to quit.";
+                    bBlock.style.display = "block";
+                }
+                else {
+                    reply.textContent = "Keep trying!";
+                }
+            }
+
+            // Exit sequence upon quitting
+            function end() {
+                tryIt.textContent = "";
+                num.textContent = "";
+                take.value = "";
+                show.textContent = "";
+                bBlock.style.display = "none";
+                reply.textContent = "Ok! Thank you for playing!";
+            }
+        });
+    </script>
+
+    <link rel="shortcut icon" href="satellite.png">
+    <title>Homework 3 Extra Credit</title>
+</head>
+
+<body class="grid">
+    <header class="grid-area grid-area-1">
+        <h1 style=text-align:center>Homework 3 Extra Credit</h1>
+    </header>
+
+    <aside class="grid-area grid-area-2">
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/index.html">Home</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw2.html">Homework 2</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3.html">Homework 3</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw4.html">Homework 4</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5.html">Homework 5</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw6.html">Homework 6</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7.html">Homework 7</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw8.html">Homework 8</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="grid-area grid-area-3">
+
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3.html">Homework 3 Main</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3_pt1.html">Homework 3 Part 1
+                </a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3_pt2.html">Homework 3 Part 2
+                </a></li>
+            </ul>
+        </nav>
+
+
+        <article>
+            <p id="intro">Try to answer this multiplication problem!</p>
+            <p id="question"><br></p>
+            <p id="output"><br></p>
+            <p><input type="number" id="answer" size="5"></p>
+            <p id="response"></p>
+            <p id="bBlock"><button type="reset" id="yes">YES</button>
+                <button type="reset" id="no">NO</button></p>
+        </article>
+
+    </main>
+
+    <footer class="grid-area grid-area-4 footer">
+        <a href="mailto:gashwor1@mail.ccsf.edu" class="email">Contact me via email</a>
+
+        <details class="triangle">
+            <summary><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" class="copyright"/></a></summary>
+            CCSF CNIT133 Homework by George Ashworth is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+          </details>
+    </footer>
+
+</body>
+</HTML>
+

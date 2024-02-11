@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!-- George Ashworth -->
+<!-- 11/28/23 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Parses a user inputted phone number into separate sections.">
+    <meta property="og:title" content="Homework 6 Part 3">
+    <meta property="og:url" content="https://hills.ccsf.edu/~gashwor1/hw6_pt3.html">
+    <meta property="og:description" content="Parses a user inputted phone number into separate sections.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile1.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="homework1.css"> 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+
+
+    <script>
+        $(document).ready(function($){
+            // Automatically formats input from user correctly.
+            $("#phone").mask("(999) 999-9999"); 
+
+        
+
+            function process() {
+                var user_entry = document.getElementById("phone").value;
+                var regexPattern = /^\((\d{3})\)[\s](\d{3})[-](\d{4})$/;
+
+                if (regexPattern.test(user_entry)) {
+                    var match_array = user_entry.match(regexPattern);
+                    document.forms["phone_parser"].elements["area_code"].value = match_array[1];
+                    document.forms["phone_parser"].elements["prefix"].value = match_array[2];
+                    document.forms["phone_parser"].elements["line_num"].value = match_array[3];
+                    document.getElementById("display").innerHTML = "";
+                }
+
+                else {
+                    document.forms["phone_parser"].elements["area_code"].value = "";
+                    document.forms["phone_parser"].elements["prefix"].value = "";
+                    document.forms["phone_parser"].elements["line_num"].value = "";
+                    document.getElementById("display").innerHTML = "<p style='color:rgb(188, 11, 11);'>Error: Incorrect format. Must be in the form \"(999) 999-9999\".</p>";
+                }
+            }
+
+            // Sets click functionality.
+            $("#enter").click(process);
+
+            // Allows hitting [enter] to process the user input.
+            const input_field = document.getElementById("phone");
+            const btn = document.getElementById("enter");
+            input_field.addEventListener("keypress", function(event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    btn.click();
+                }
+            });
+
+        });
+    </script>
+
+
+    <link rel="shortcut icon" href="satellite.png">
+    <title>Homework 6 Part 3</title>
+</head>
+
+<body class="grid">
+    <header class="grid-area grid-area-1">
+        <h1 style=text-align:center>CNIT 133 Homework 6 Part 3</h1>
+    </header>
+
+    <aside class="grid-area grid-area-2">
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/index.html">Home</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw2.html">Homework 2</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3.html">Homework 3</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw4.html">Homework 4</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5.html">Homework 5</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw6.html">Homework 6</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7.html">Homework 7</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw8.html">Homework 8</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="grid-area grid-area-3">
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw6.html">homework 6 Main</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw6_pt1.html">homework 6 Part 1: Rounded and Rooted</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw6_pt2.html">homework 6 Part 2: Text Search
+                </a></li>
+            </ul>
+        </nav>
+
+        <article>
+            <h2>Phone Number Parser</h2><p></p>
+
+            <form name="phone_parser">
+
+                <p><label for="phone"><b>Please input a phone number in this format: (999) 999-9999</b></label></p>
+                <p><input type="text" name="phone-number" id="phone" size="12" placeholder="(123) 456-7890"></p>
+
+                <p><input type="button" id="enter" value="Process">
+                <input type="reset" id="clear" value="Clear"></p>
+
+                <p><label for="area_code"><b>Area code: </b></label><input type="text" name="area_code" id="area_code" size="2" readonly></p>
+                <p><label for="prefix"><b>Prefix: </b></label><input type="text" name="prefix" id="prefix" size="2" readonly></p>
+                <p><label for="line_num"><b>Line number: </b></label><input type="text" name="line_num" id="line_num" size="3" readonly></p>
+
+                <p id="display" style="font-family: monospace;"></p>
+
+            </form>
+
+        </article>
+    </main>
+
+    <footer class="grid-area grid-area-4 footer">
+        <a href="mailto:gashwor1@mail.ccsf.edu" class="email">Contact me via email</a>
+
+        <details class="triangle">
+            <summary><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" class="copyright"></a></summary>
+            CCSF CNIT133 Homework by George Ashworth is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+          </details>
+    </footer>
+
+</body>
+</HTML>

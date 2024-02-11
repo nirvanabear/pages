@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!-- George Ashworth -->
+<!-- 12/5/23 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Navigation bar demonstration.">
+    <meta property="og:title" content="Homework 7 part 2">
+    <meta property="og:url" content="https://hills.ccsf.edu/~gashwor1/hw7_pt2.html">
+    <meta property="og:description" content="Navigation bar demonstration.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile1.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="homework1.css"> 
+
+
+    <style>
+        .horiz_menu nav { background: #cdb3da; }
+        .horiz_menu nav { float:left;}
+        .horiz_menu nav ul {text-align:center;}
+        .horiz_menu nav ul li {float:left; display:inline;}
+        .horiz_menu nav ul li:hover {background:#cdb3da;}
+        .horiz_menu nav ul li a {display:block; padding:15px 25px; color:#0b3e6d; text-decoration:none; }
+        .horiz_menu nav ul li ul {position:absolute; width:120px; background:#cdb3da;}
+        .horiz_menu nav ul li ul li {width:120px;}
+        .horiz_menu nav ul li ul li a {display:block; padding:15px 10px; color:#FFF;}
+        .horiz_menu nav ul li ul li:hover a {background:#D1D1D1; color:#F00;}
+        .horiz_menu nav ul li ul.fallback {display:none;}
+        .horiz_menu nav ul li:hover ul.fallback {display:block;}
+    </style>
+    
+        <!-- <script src="https://code.jquery.com/jquery-3.7.0.js"></script> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    
+    
+    <script>
+        $(document).ready(function(){
+            $('.horiz_menu nav li ul').hide().removeClass('fallback');
+            $('.horiz_menu nav li').hover(
+                function () {
+                $('ul', this).stop().slideDown(200);
+                },
+                function () {
+                $('ul', this).stop().slideUp(200);
+                }
+            );
+        });
+    </script>
+
+    <link rel="shortcut icon" href="satellite.png">
+    <title>Homework 7 Part 2</title>
+</head>
+
+<body class="grid">
+    <header class="grid-area grid-area-1">
+        <h1 style=text-align:center>CNIT 133 Homework 7 Part 2</h1>
+    </header>
+
+    <aside class="grid-area grid-area-2">
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/index.html">Home</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw2.html">Homework 2</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3.html">Homework 3</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw4.html">Homework 4</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5.html">Homework 5</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7.html">Homework 6</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7.html">Homework 7</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw8.html">Homework 8</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="grid-area grid-area-3">
+        <div class="horiz_menu">
+            <nav>
+                <ul>
+                <li id="hw2">
+                    <a aria-label="Homework 2 Links" href="https://hills.ccsf.edu/~gashwor1/hw2.html">Homework 2</a>
+                    <ul class="fallback">
+                        <li><a href="https://hills.ccsf.edu/~gashwor1/hw2_pt1.html">Homework 2 Part 1</a></li>
+                        <li><a href="https://hills.ccsf.edu/~gashwor1/hw2_pt2.html">Homework 2 Part 2</a></li>
+                    </ul>
+                </li>
+
+                <li id="hw3">
+                    <a aria-label="Homework 3 Links" href="https://hills.ccsf.edu/~gashwor1/hw3.html">Homework 3</a>
+                    <ul class="fallback">
+                        <li><a href="https://hills.ccsf.edu/~gashwor1/hw3_pt1.html">Homework 3 Part 1</a></li>
+                        <li><a href="https://hills.ccsf.edu/~gashwor1/hw3_pt2.html">Homework 3 Part 2</a></li>
+                        <li><a href="https://hills.ccsf.edu/~gashwor1/hw3_ec.html">Homework 3 Extra Credit</a></li>
+                    </ul>
+                </li>
+
+                <li id="hw4">
+                    <a aria-label="Homework 4 Links" href="https://hills.ccsf.edu/~gashwor1/hw4.html">Homework 4</a>
+                    <ul class="fallback">
+                        <li><a href="https://hills.ccsf.edu/~gashwor1/hw4_pt1.html">Homework 4 Part 1</a></li>
+                        <li><a href="https://hills.ccsf.edu/~gashwor1/hw4_pt2.html">Homework 4 Part 2</a></li>
+                        <li><a href="https://hills.ccsf.edu/~gashwor1/hw4_ec.html">Homework 4 Extra Credit</a></li>
+                    </ul>
+                </li>
+                </ul>
+            </nav>
+        </div>
+
+        <br><br><br><br><br><br>
+
+
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7.html">Homework 7: Main</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7_pt1.html">Homework 7 Part 1: Style Picker</a></li>
+            </ul>
+        </nav>
+        <br>
+    </main>
+
+    <footer class="grid-area grid-area-4 footer">
+        <a href="mailto:gashwor1@mail.ccsf.edu" class="email">Contact me via email</a>
+
+        <details class="triangle">
+            <summary><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" class="copyright"></a></summary>
+            CCSF CNIT133 Homework by George Ashworth is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+          </details>
+    </footer>
+
+</body>
+</HTML>

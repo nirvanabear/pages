@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!-- George Ashworth -->
+<!-- 11/7/23 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Survey on the user's age, browser usage and favorite movie genre.">
+    <meta property="og:title" content="Homework 5 Part 1">
+    <meta property="og:url" content="https://hills.ccsf.edu/~gashwor1/hw5_pt1.html">
+    <meta property="og:description" content="Survey on the user's age, browser usage and favorite movie genre.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile1.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="homework1.css"> 
+
+    <script>
+        // Sets functionality after HTML is available
+        document.addEventListener("DOMContentLoaded", function () {
+            const btn = document.getElementById("enter");
+            const reset = document.getElementById("clear");
+
+            function show_inputs() {
+                const input_name = document.getElementById("user_name").value;
+                const age_nodes = document.getElementsByName("age_group");
+                const browser_nodes = document.getElementsByName("browser");
+                const movie = document.getElementById("movie_choice").value;
+
+                // Name entry validation.
+                var error_message = "";
+                if (input_name === "") {
+                    error_message += "Please enter your name.";
+                }
+
+                // Age entry validation.
+                var age_array = [];
+                var age_bool = false;
+                for (let i=0; i<age_nodes.length; i++) {
+                    if (age_nodes[i].checked) {
+                        age_array.push(age_nodes[i].value);
+                    }
+                    
+                    ;
+                    if (age_nodes[i].checked) {
+                        age_bool = true;
+                    }
+                }
+                if (!age_bool) {
+                    error_message += " Please enter an age range.";
+                }
+
+                // Browser entry validation.
+                var browser_array = [];
+                var browser_bool = false;
+                for (let i=0; i<browser_nodes.length; i++) {
+                    if (browser_nodes[i].checked) {
+                        browser_array.push(browser_nodes[i].value);
+                    }
+                    if (browser_nodes[i].checked) {
+                        browser_bool = true;
+                    }                    
+                }
+                if (!browser_bool) {
+                    error_message += " Please enter a browser selections.";
+                }
+                
+                // Movie entry validation
+                if ((movie === "") || (movie === "Pick a genre")) {
+                    error_message += " Please enter a movie preference.";
+                }
+
+                // Error message or confirmation message output.
+                if (error_message !== "") {
+                    document.getElementById("display").innerHTML = error_message;
+                }
+                else {
+                    document.getElementById("display").innerHTML = "<b>Thanks, " + input_name + ", your data was submitted!</b><br><br>" + "&nbsp;&nbsp;&nbsp;&nbsp;[" + age_array + ", " + browser_array + ", " + movie + "]";
+                }
+            }
+
+            btn.addEventListener("click", show_inputs);
+        });
+    </script>
+
+    <link rel="shortcut icon" href="satellite.png">
+    <title>Homework 5 Part 1</title>
+</head>
+
+<body class="grid">
+    <header class="grid-area grid-area-1">
+        <h1 style=text-align:center>Homework 5 Part 1</h1>
+    </header>
+
+    <aside class="grid-area grid-area-2">
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/index.html">Home</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw2.html">Homework 2</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3.html">Homework 3</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw4.html">Homework 4</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5.html">Homework 5</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw6.html">Homework 6</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7.html">Homework 7</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw8.html">Homework 8</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="grid-area grid-area-3">
+
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5.html">Homework 5: Main</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5_pt2.html">Homework 5 Part 2: Online Radio Stations</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5_pt3.html">Homework 5 Part 3: US State Census Data</a></li>
+            </ul>
+        </nav>
+
+        <article>
+            <h2>User Survey</h2>
+        </article>
+
+        <!-- Survey input form -->
+        <section class="body">      
+            <form name="user_survey">
+
+                <p><label for="user_name"><b>Please enter your full name:</b></label></p>
+                <p><input type="text" id="user_name" size="10" placeholder="Full Name"></p>
+                <br>
+
+                <!-- <p><label for="age_group"><b>Age Group:</b></label></p> -->
+                <fieldset>
+                <legend><b>Age Group:</b></legend>
+                <p><label for="lt21">Under 21</label><input type="radio" value="over21" id="lt21" name="age_group">
+                <label for="from21to50">Between 21 and 50</label><input type="radio" value="from21to50" id="from21to50" name="age_group">
+                <label for="gt50">Over 50</label><input type="radio" value="over50" id="gt50" name="age_group"></p>
+                </fieldset>
+                <br>
+
+                <!-- <p><label for="browser"><b>Please select all browsers you have used:</b></label></p>  -->
+                <fieldset>
+                <legend><b>Please select all browsers you have used:</b></legend>
+                <p><label for="firefox">Firefox</label><input type="checkbox" value="firefox" id="firefox" name="browser">
+                <label for="edge">Edge</label><input type="checkbox" value="edge" id="edge" name="browser">
+                <label for="chrome">Chrome</label><input type="checkbox" value="chrome" id="chrome" name="browser">
+                <label for="safari">Safari</label><input type="checkbox" value="safari" id="safari" name="browser"></p>
+                </fieldset>
+                <br>
+                
+                <p><label for="movie_choice"><b>Choose your preferred movie type:</b></label></p>
+                <select id="movie_choice" aria-label="Preferred Movie Choice">
+                    <option selected>Pick a genre</option>
+                    <option value="action">Action</option>
+                    <option value="comedy">Comedy</option>
+                    <option value="drama">Drama</option>
+                    <option value="doc">Documentary</option>
+                    <option value="sci_fi">Science Fiction</option>
+                </select>
+
+                <p><input type="button" id="enter" value="Process">
+                <input type="reset" id="clear" value="Clear"></p>
+
+                <p id="display" style="font-family: monospace;"></p>
+
+            </form>
+            <p></p>
+        </section>
+
+
+
+    </main>
+
+    <footer class="grid-area grid-area-4 footer">
+        <a href="mailto:gashwor1@mail.ccsf.edu" class="email">Contact me via email</a>
+
+        <details class="triangle">
+            <summary><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" class="copyright"></a></summary>
+            CCSF CNIT133 Homework by George Ashworth is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+          </details>
+    </footer>
+
+</body>
+</HTML>

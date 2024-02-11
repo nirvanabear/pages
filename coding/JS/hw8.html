@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<!-- George Ashworth -->
+<!-- 12/18/23 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="XMLHttpRequest explanation and REST API examination.">
+    <meta property="og:title" content="Homework 8">
+    <meta property="og:url" content="https://hills.ccsf.edu/~gashwor1/homework8.html">
+    <meta property="og:description" content="XMLHttpRequest explanation and REST API examination.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile1.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="homework1.css"> 
+
+    <style>
+        table,th,td {
+          border : 1px solid black;
+          border-collapse: collapse;
+        }
+        th,td {
+          padding: 5px;
+        }
+        .indent p { 
+            text-indent: 30px;
+            margin: 0; 
+        }
+        .indent div { 
+            text-indent: -30px;
+            margin-left: 45px; 
+            color: darkblue;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Sets functionality of button.
+            const btn = document.getElementById("enter");
+            btn.addEventListener("click", loadDoc);
+
+
+            // Sends request for data in local XML document.
+            function loadDoc() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function() {
+                myFunction(this);
+            }
+            xhttp.open("GET", "cd_catalog.xml");
+            xhttp.send();
+            }
+
+
+            // Parses XML data and builds table for publishing to site.
+            function myFunction(xml) {
+            const xmlDoc = xml.responseXML;
+            const x = xmlDoc.getElementsByTagName("CD");
+            let table="<tr><th>Artist</th><th>Title</th></tr>";
+            for (let i = 0; i <x.length; i++) { 
+                table += "<tr><td>" +
+                x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+                "</td><td>" +
+                x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+                "</td></tr>";
+            }
+            document.getElementById("demo").innerHTML = table;
+            }
+
+
+            // Sends HTTP GET request and receives JSON response.
+            async function fetchResource(url) {
+                const response = await fetch(url);
+                const result = await response.json();
+                console.log(result);
+                console.log(result[239].flags.png);
+                return result;
+            }
+            
+
+            // Builds dropdown menu from data in JSON object.
+            async function menuMaker(result) {
+                var option_menu = `<p><label for="country_choice"><strong>Choose your country:</strong></label></p>
+                <select id="country_choice" aria-label="Preferred Country Choice">
+                    <option selected>Pick a nation</option>`
+
+                // Creates array of pairs: country name, JSON position.
+                var country_array = [];
+                for (var k=0; k<result.length; k++) {
+                    const entry_pair = [result[k].name.common, k.toString()];
+                    country_array.push(entry_pair);
+                }
+                
+                // Alphabetizes the country list.
+                function Comparator(a, b) {
+                    if (a[0].toUpperCase() < b[0].toUpperCase()) return -1;
+                    if (a[0].toUpperCase() > b[0].toUpperCase()) return 1;
+                    return 0;
+                }
+                country_array.sort(Comparator);
+                console.log(country_array); 
+
+                // Compiles dropdown menu.
+                for (var i=0; i<country_array.length; i++) {
+                    var j = i.toString();
+                    var entry = `<option value="${country_array[i][1]}">${country_array[i][0]}</option>`;
+                    option_menu += entry;
+                }
+                document.getElementById("country_menu").innerHTML = option_menu;
+            }
+            
+
+            // Publishes country data to site based on user selection.
+            function dropDownOutput(result) {
+                const country_num = parseInt(document.getElementById("country_choice").value);
+
+                document.getElementById("country").innerHTML = result[country_num].name.common;
+
+                var currency_str = ""
+                for (let key in result[country_num].currencies) {
+                    currency_str += key + " ";
+                }
+                document.getElementById("currency").innerHTML = currency_str;
+
+                var lang_str = ""
+                for (let key in result[country_num].languages) {
+                    lang_str += key + " ";
+                }
+                document.getElementById("languages").innerHTML = lang_str;
+
+                document.getElementById("timezone").innerHTML = result[country_num].timezones;
+
+                const flag_location = result[country_num].flags.png;
+                const flag = `<img SRC="${flag_location}" alt="flag">`;
+                document.getElementById("flag").innerHTML = flag;
+            }
+
+
+            // Calls fetch function and sets dropdown menu operation.
+            async function buttonMaker() {
+                const result = await fetchResource("https://restcountries.com/v3.1/all?fields=name,currencies,languages,timezones,flags");
+                await menuMaker(result);
+                const menu = document.getElementById("country_choice");
+                menu.addEventListener("change", function(){ dropDownOutput(result) });
+            }
+            buttonMaker();
+        });
+    </script>
+
+    <link rel="shortcut icon" href="satellite.png">
+    <title>Homework 8</title>
+</head>
+
+<body class="grid">
+    <header class="grid-area grid-area-1">
+        <h1 style=text-align:center>Homework 8 - AJAX Application</h1>
+    </header>
+
+    <aside class="grid-area grid-area-2">
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/index.html">Home</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw2.html">Homework 2</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3.html">Homework 3</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw4.html">Homework 4</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5.html">Homework 5</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw6.html">Homework 6</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7.html">Homework 7</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw8.html">Homework 8</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="grid-area grid-area-3">
+        <div>
+            <br><br>
+            <button type="button" id="enter">Get CD collection</button>
+            <br><br>
+            <table id="demo"></table>
+        </div>
+
+        <article class="indent">
+            <h2>Explanation of AJAX</h2>
+            <p>This JavaScript code uses the AJAX object XMLHttpRequest to retrieve certain data from a file on the server and then display it on the web page without reloading the page. I modified the code with the following so that the &lt;script&gt; tag appears in the header, but is otherwise essentially the same: </p>
+            <div id="a"></div>
+            <script>
+                var a = `document.addEventListener("DOMContentLoaded", function () {
+                    const btn = document.getElementById("enter");
+                    btn.addEventListener("click", loadDoc);`
+                document.getElementById("a").innerText = a;
+            </script>
+            <p>Upon clicking the button, the event listener triggers the function loadDoc(), which begins by creating a new XMLHttpRequest object. The code then defines the behavior after the response is received with the .onload method. The use of "this" in myFunction(this) that the .onload method is assigned to refers to the XMLHttpRequest object that called it.</p>
+            <p>The code then prepares a new HTTP request with .open as a "GET" request regarding the cd_catalog.xml file on the server and sends the request with .send. After the request is sent, the REST API processes it and replies with an XML response.</p>
+            <p>The function myFunction() then handles the incoming response from the API, as previously assigned to the .onload method. This function uses the .responseXML property from the XMLHttpRequest object to create an array from .getElementsByTagName("CD"). This array has the data for each CD as it's elements, which are then iterated through by the for loop.</p>
+            <p>Each loop takes only the ARTIST and TITLE from each array element and concatinates them inside &lt;table&gt; formatting to prepare them for posting to the website. Once the loop finishes building the table, the new HTML code is then displayed to the page element identified as "demo".</p>
+        </article>
+        <br><br>
+
+        <article class="indent">
+            <h2>Benefits of using REST API with restcountries.com</h2>
+            <p>In today's global marketplace, it is becoming increasingly important to have websites which are custom fit to the locality for any of your customers. By developing websites tailored to customers throughout the world, you increase the familiarity, comfort and, therefore, repeat business from your international customer base.</p>
+            <p>In order to accomodate this customization, restcountries.com has an API that offers a variety of information useful for tailoring a website to a particular locality. The information is delivered using a <a href="https://restcountries.com/v3.1/all" target="_blank" rel="noopener noreferrer">JSON response</a>. No authorization key is needed for the basic JSON, but they do also offer a <a href="https://countrylayer.com/" target="_blank" rel="noopener noreferrer">subscription-based API</a> on the website countrylayer.com which would require an auth key, but would also offer greater support and more features from the developer. The <a href="https://countrylayer.com/pricing/" target="_blank" rel="noopener noreferrer">subscription fee</a> would be based off of the number of monthly hits our site made to the API, from $49.99 for under 5000 hits to $149.99 for up to 20,000 hits, billed via credit card.</p>
+            <p>Various types of country data is available. Data about the country name and a flag emblem can be used on the website header to give the users an immediate sense that the site's features will work well in their country. Currency type can be used to set up any displays for pricing which will facilitate speed and comfort with transactions. The languages data is available to quickly set up a default language for the website when it first loads, which can then be changed by the user to suit their personal needs. Timezones can be used to provide the local times when customer service is available.</p>
+            <p>The <a href="https://restcountries.com/" target="_blank" rel="noopener noreferrer">API documentation</a> offers more details about what data is available in the JSON file. The example Country Picker below showcases the API and displays how information is immediately available to be used to customize the website for 250 different countries and territories.</p>
+            <p></p>
+        </article>
+
+        <article>
+            <h3>Country Picker</h3>
+            <div id="country_menu">Let's make a menu!</div>
+            <br>
+            <p><b>Country:</b></p>
+            <p id="country"></p>
+            <p><b>Currency Codes:</b></p>
+            <p id="currency"></p>
+            <p><b>Language Codes:</b></p>
+            <p id="languages"></p>
+            <p><b>Timezone:</b></p>
+            <p id="timezone"></p>
+            <p id="flag"></p>
+        </article>
+        <br><br>
+
+        <article>
+            <h4>Music for reading</h4>
+            <iframe width="500" height="166" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1556925232&color=%23e424d0&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #4C1796;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/johnsummit" title="John Summit" target="_blank" style="color: #4C1796; text-decoration: none;">John Summit</a> · <a href="https://soundcloud.com/johnsummit/deadmau5-kaskade-i-remember-john-summit-remix" title="deadmau5 &amp; Kaskade - I Remember (John Summit Remix)" target="_blank" style="color: #4C1796; text-decoration: none;">deadmau5 &amp; Kaskade - I Remember (John Summit Remix)</a></div>
+        </article>
+    </main>
+
+    <footer class="grid-area grid-area-4 footer">
+        <a href="mailto:gashwor1@mail.ccsf.edu" class="email">Contact me via email</a>
+
+        <details class="triangle">
+            <summary><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" class="copyright"></a></summary>
+            CCSF CNIT133 Homework by George Ashworth is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+          </details>
+    </footer>
+
+</body>
+</HTML>

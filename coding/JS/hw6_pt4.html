@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- George Ashworth -->
+<!-- 8/29/23 -->
+<html lang="en">
+
+<head>
+
+    <style>
+        label {
+  display: inline-block;
+  width: 320px;
+  text-align: right;
+  padding-right: 1em;
+}
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+
+    <!-- <script>
+        $('input[name="phone-number"]').mask('(000) 000 0000');s
+    </script> -->
+
+<!-- <script src="https://raw.githubusercontent.com/igorescobar/jQuery-Mask-Plugin/master/src/jquery.mask.js"></script> -->
+<!-- <script></script> -->
+<script>
+$(document).ready(function($){
+    $("#phone").mask("(99) 9999-9999"); 
+    // $("#telf1").mask("(99) 9999*-9999");    
+    // $("#telf2").mask("(99) 9999?-9999"); 
+});
+</script>
+
+</head>
+
+<body>
+
+    <!-- <input type="text" id="phone" placeholder="(99) 9999-9999"> -->
+    <p>
+        <label>Phone Number Example
+          <input type="text" id="phone"/>
+        </label>
+      </p>
+
+</body>

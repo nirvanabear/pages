@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!-- George Ashworth -->
+<!-- 11/7/23 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Pulldown menus full of good tunes.">
+    <meta property="og:title" content="Homework 5 Part 2">
+    <meta property="og:url" content="https://hills.ccsf.edu/~gashwor1/hw5_pt2.html">
+    <meta property="og:description" content="Pulldown menus full of good tunes.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile1.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="homework1.css"> 
+
+    <script>
+        // Dropdown menu functionality.
+        function goToNewPage(myForm) {
+            var myDestination = myForm.destinationList.options[myForm.destinationList.selectedIndex].value;
+            window.open(myDestination, '_blank');
+        }
+    </script>
+
+    <link rel="shortcut icon" href="satellite.png">
+    <title>Homework 5 Part 2</title>
+</head>
+
+<body class="grid">
+    <header class="grid-area grid-area-1">
+        <h1 style=text-align:center>Homework 5 Part 2</h1>
+    </header>
+
+    <aside class="grid-area grid-area-2">
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/index.html">Home</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw2.html">Homework 2</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3.html">Homework 3</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw4.html">Homework 4</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5.html">Homework 5</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw6.html">Homework 6</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7.html">Homework 7</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw8.html">Homework 8</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="grid-area grid-area-3">
+
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5.html">Homework 5: Main</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5_pt1.html">Homework 5 Part 1: User Survey</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5_pt3.html">Homework 5 Part 3: US State Census Data</a></li>
+            </ul>
+        </nav>
+
+        <article>
+            <h2>Online Radio Stations</h2><p></p>
+        </article>
+
+        <!-- Dropdown menus -->
+        <section>
+            <form>
+                <h3>Let's Boogie!</h3>
+                <select name="destinationList" onChange="goToNewPage(this.form);">
+                <option>Choose Destination:</option>
+                <option value="https://www.kcrw.com/music/shows/metropolis">KCRW Metropolis</option>
+                <option value="https://www.pulse87ny.com/">Pulse 87</option>
+                <option value="https://bff.fm/shows/indierockgirl">Indie Rock Girl Radio</option>
+                <option value="https://www.passportapproved.com/playlist.php">Passport Approved</option>
+                <option value="https://www.kexp.org/archive/">KEXP Seattle</option>
+                <option value="https://www.accuradio.com/keyword/Chamber%20Music">Chamber Music</option>
+                </select>
+            </form>
+                
+            <br><br>
+                
+            <form>
+                <h3>That's my jam!</h3>
+                <select name="destinationList">
+                <option value="https://www.knvc.org/show/186383/high-country-celtic-radio#episodes-header">High Country Celtic Radio</option>
+                <option value="https://onlineradiobox.com/us/kcea/playlist/">KCEA Big Band</option>
+                <option value="https://www.canalsur.es/radio_directo-2014.html?directo=player_flamenco">Flamenco Radio</option>
+                <option value="http://player.streamguys.com/kalw/sgplayer/player.php?s=1&title=Local%20Music%20Player">KALW Bluegrass Signal</option>
+                <option value="https://www.accuradio.com/channel/Son%20Cubano/727/">Son Cubano</option>
+                <option value="https://www.wwoz.org/listen/archive/">WWOZ New Orleans Jazz</option>
+                <option value="http://www.kzfr.org/shows/bluesbayou">Blues Bayou</option>
+                </select>
+                <input type="button" value="Go" onClick="goToNewPage(this.form);">
+            </form>
+        </section>
+    </main>
+
+
+
+    <footer class="grid-area grid-area-4 footer">
+        <a href="mailto:gashwor1@mail.ccsf.edu" class="email">Contact me via email</a>
+
+        <details class="triangle">
+            <summary><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" class="copyright"></a></summary>
+            CCSF CNIT133 Homework by George Ashworth is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+          </details>
+    </footer>
+
+</body>
+</HTML>

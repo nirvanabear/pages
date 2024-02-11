@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile1.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="homework1.css"> 
+
+    <title>Contact</title>
+    <link rel="shortcut icon" href="satellite.png">
+</head>
+<body class="grid">
+    <header class="grid-area grid-area-1">
+        <h1 style=text-align:center>Contact</h1>
+    </header>
+
+    <aside class="grid-area grid-area-2">
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/index.html">Home</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw2.html">Homework 2</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3.html">Homework 3</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw4.html">Homework 4</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5.html">Homework 5</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw6.html">Homework 6</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7.html">Homework 7</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw8.html">Homework 8</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <section class="grid-area grid-area-3">
+        <article>
+            <p>For any questions or requests for further information, please contact me via <a href="mailto:gashwor1@mail.ccsf.edu" class="email">email</a>. The fillable form below is not functional at this time: </p>
+        </article>
+        <article>
+            <form action="#" method="get">
+                <label for="fullname" class="required">Full Name: </label>
+                <input type="text" placeholder="Full Name" required name="fullname" id="fullname" size="35" maxlength="25">
+                <p></p>
+                <label for="mail" class="required">Your Email: </label>
+                <input type="email" id="mail" name="mail" required placeholder="input email here" size="35">
+
+                <p class="comment">Comments: 
+                    <textarea class=textarea cols="30" rows="4" 
+					placeholder="Please do not attempt to use this form to contact me. For HTML demonstration only. Use the email link below."></textarea></p>
+                <p class="require_label">* required</p>
+                <button id="sub" class="button">Submit</button>
+            </form>
+
+            <script>
+                var email = document.getElementById("mail");
+                var btn = document.getElementById("sub");
+
+                btn.addEventListener("click", function() {
+                    if (email.validity.valueMissing) {
+                    email.setCustomValidity("Please input an email address.");
+                    } 
+                    else {
+                        if (email.validity.typeMismatch) {
+                            email.setCustomValidity("Please input a valid email.");} 
+                        else {email.setCustomValidity("");}
+                    }
+                });
+            </script>
+                
+        </article>
+    </section>
+
+    <footer class="grid-area grid-area-4 footer">
+        <a href="mailto:gashwor1@mail.ccsf.edu" class="email">Contact me via email</a>
+
+        <details class="triangle">
+            <summary><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" class="copyright"/></a></summary>
+            CCSF CNIT133 Homework by George Ashworth is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. 
+        </details>
+        <p></p>
+        <br/>
+    </footer>
+    
+</body>
+</html>

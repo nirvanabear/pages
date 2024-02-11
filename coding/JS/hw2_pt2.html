@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<!-- George Ashworth -->
+<!-- 8/29/23 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Performs addition, multiplication, average, min and max functions on three numbers.">
+    <meta property="og:title" content="Homework 2 Part 2">
+    <meta property="og:url" content="https://hills.ccsf.edu/~gashwor1/hw2_pt2.html">
+    <meta property="og:description" content="Performs addition, multiplication, average, min and max functions on three numbers.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile1.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="homework1.css"> 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+
+        function process() 
+        {
+            // Takes in data input from the user.
+            var number1, number2, n1, n2, n3, sum, avg, product;
+
+            number1 = document.forms["myform"].elements["num1"].value;
+            number2 = document.forms["myform"].elements["num2"].value;
+            number3 = document.forms["myform"].elements["num3"].value;
+
+            /* Checks if input is a number and not a space or an empty
+            string. Throws an error message otherwise. */
+            if (((isNaN(number1) || isNaN(number2) || isNaN(number3))  === false) && ((number1.trim() === "" || number2.trim() === "" || number3.trim() === "") === false)) {
+
+                n1 = parseFloat(number1);
+                n2 = parseFloat(number2);
+                n3 = parseFloat(number3);
+
+                sum = n1 + n2 + n3;
+                avg = sum / 3;
+                product = n1 * n2 * n3;
+                minimum = Math.min(n1, n2, n3);
+                maximum = Math.max(n1, n2, n3);
+
+                output = "sum: " + sum + ", average: " + avg + ", product: " + product + ", minimum: " + minimum + ", maximum: " + maximum;
+
+            }
+            else {
+                output = "Error: Non-numerical value entered.";
+            }
+
+            document.forms["myform"].elements["result"].value = output;
+        }
+
+        // Fade in capability for Submit button.
+        $(document).ready(function(){
+            $("#unfade").click(function(){
+                $("textarea").fadeIn();
+            });
+        });
+
+        // Fade in capability for Reset button.
+        $(document).ready(function(){
+            $("#fadein").click(function(){
+                $("textarea").fadeIn();
+            });
+        });        
+
+        // Fade out capability for Click to Fade button.
+        $(document).ready(function(){
+            $("#fader").click(function(){
+                $("textarea").fadeOut();
+            });
+        });        
+
+    </script>
+
+    <link rel="shortcut icon" href="satellite.png">
+    <title>Homework 2 Part 2</title>
+</head>
+
+<body class="grid">
+    <header class="grid-area grid-area-1">
+        <h1 style=text-align:center>Homework 2 Part 2</h1>
+    </header>
+
+    <aside class="grid-area grid-area-2">
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/index.html">Home</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw2.html">Homework 2</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3.html">Homework 3</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw4.html">Homework 4</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5.html">Homework 5</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw6.html">Homework 6</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7.html">Homework 7</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw8.html">Homework 8</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="grid-area grid-area-3">
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw2.html">Homework 2 Main</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw2_pt1.html">Homework 2 Part 1</a></li>
+            </ul>
+        </nav>
+
+
+
+        <section class="body">
+            <h3>Calculator for Sum, Average, Product, Min and Max</h3>
+            <h4>Please input numbers only.</h4>
+            
+            <form name="myform">
+            <table>
+            <tr>
+            <td>First Number:</td>
+            <td><input type="text" name="num1" size="10"></td>
+            </tr>
+            
+            <tr>
+            <td>Second Number:</td>
+            <td><input type="text" name="num2" size="10"></td>
+            </tr>
+
+            <tr>
+            <td>Third Number:</td>
+            <td><input type="text" name="num3" size="10"></td>
+            </tr>
+
+            <tr>
+            <td>Results:</td>
+            <td></td>
+            </tr>
+            
+            </table>
+
+            <textarea rows="4" cols="40" name="result"></textarea>
+
+            <br><br>
+            
+            <input type="button" id="unfade" onclick="process()" value="Process">
+            <input type="reset" id="fadein" value="Clear">
+            </form>
+        </section>
+            
+        <button id="fader">Fader</button>
+
+
+
+    </main>
+
+    <footer class="grid-area grid-area-4 footer">
+        <a href="mailto:gashwor1@mail.ccsf.edu" class="email">Contact me via email</a>
+
+        <details class="triangle">
+            <summary><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" class="copyright"/></a></summary>
+            CCSF CNIT133 Homework by George Ashworth is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+          </details>
+    </footer>
+
+</body>
+</HTML>

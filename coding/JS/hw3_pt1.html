@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<!-- George Ashworth -->
+<!-- 10/3/23 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Student grade calculator.">
+    <meta property="og:title" content="Homework 3 Part 1">
+    <meta property="og:url" content="https://hills.ccsf.edu/~gashwor1/hw3_pt1.html">
+    <meta property="og:description" content="Student grade calculator.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile1.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="homework1.css"> 
+
+
+    <script>
+
+        function process() 
+        {
+            // Takes in data input from the user.
+            var number1, number2, number3, number4, n1, n2, n3, n4, final_avg, final_int, letter_grd;
+
+            number1 = document.forms["myform"].elements["num1"].value;
+            number2 = document.forms["myform"].elements["num2"].value;
+            number3 = document.forms["myform"].elements["num3"].value;
+            number4 = document.forms["myform"].elements["num3"].value;
+
+            /* Checks if input is a number and not a space or an empty
+            string. Throws an error message otherwise. */
+            if (((isNaN(number1) || isNaN(number2) || isNaN(number3) || isNaN(number4))  === false) && ((number1.trim() === "" || number2.trim() === "" || number3.trim() === "" || number4.trim() === "") === false)) {
+
+                n1 = parseFloat(number1);
+                n2 = parseFloat(number2);
+                n3 = parseFloat(number3);
+                n4 = parseFloat(number4);
+
+                // Verifies input is within 0-100 range then calculates
+                // final score and grade.
+                if ((n1 >= 0 && n1 <= 100) && (n2 >= 0 && n2 <= 100) && (n3 >= 0 && n3 <= 100) && (n4 >= 0 && n4 <= 100)) {  
+                    final_avg = (.5 * n1) + (.2 * n2) + (.2 * n3) + (.1 * n4);
+                    final_int = parseInt(final_avg);
+
+                    switch(true) {
+                        // Student's final letter grade
+                        case (final_int < 59):
+                            letter_grd = "F\nStudent must retake the course.";
+                            break
+                        case (final_int < 69):
+                            letter_grd = "D\nStudent must retake the course.";
+                            break
+                        case (final_int < 79):
+                            letter_grd = "C";
+                            break
+                        case (final_int < 89):
+                            letter_grd = "B";
+                            break
+                        case (final_int < 100):
+                            letter_grd = "A";
+                            break  
+                    }
+
+                    output = "Student's final average: " + final_int + "\nFinal grade: " + letter_grd;
+                }
+                else {
+                    output = "Error: Number is outside 0-100 range.";
+                }
+
+            }
+            else {
+                output = "Error: Non-numerical value entered.";
+            }
+
+            document.forms["myform"].elements["result"].value = output;
+        }    
+
+    </script>
+
+
+    <link rel="shortcut icon" href="satellite.png">
+    <title>Homework 3 Part 1</title>
+</head>
+
+<body class="grid">
+    <header class="grid-area grid-area-1">
+        <h1 style=text-align:center>Homework 3 Part 1</h1>
+    </header>
+
+    <aside class="grid-area grid-area-2">
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/index.html">Home</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw2.html">Homework 2</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3.html">Homework 3</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw4.html">Homework 4</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5.html">Homework 5</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw6.html">Homework 6</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7.html">Homework 7</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw8.html">Homework 8</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="grid-area grid-area-3">
+
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3.html">Homework 3 Main</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3_pt2.html">Homework 3 Part 2
+                </a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3_ec.html">Homework 3 Extra Credit
+                </a></li>
+            </ul>
+        </nav>
+
+
+        <article>
+            <h3>Student Grades</h3>
+            <form name="myform">
+                <table>
+                    <tr>
+                    <td>Homework Average:</td>
+                    <td><input type="text" name="num1" size="10"></td>
+                    </tr>
+                    
+                    <tr>
+                    <td>Mid-Term Exam Score:</td>
+                    <td><input type="text" name="num2" size="10"></td>
+                    </tr>
+        
+                    <tr>
+                    <td>Final Exam Score:</td>
+                    <td><input type="text" name="num3" size="10"></td>
+                    </tr>
+
+                    <tr>
+                    <td>Participation:</td>
+                    <td><input type="text" name="num4" size="10"></td>
+                    </tr>
+        
+                    <tr>
+                    <td>Results:</td>
+                    <td></td>
+                    </tr>
+                </table>
+    
+                <textarea rows="4" readonly cols="40" name="result"></textarea>
+    
+                <br><br>
+                
+                <input type="button" id="unfade" onclick="process()" value="Submit">
+                <input type="reset" id="fadein" value="Clear">
+            </form>
+
+        </article>
+    </main>
+
+    <footer class="grid-area grid-area-4 footer">
+        <a href="mailto:gashwor1@mail.ccsf.edu" class="email">Contact me via email</a>
+
+        <details class="triangle">
+            <summary><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" class="copyright"/></a></summary>
+            CCSF CNIT133 Homework by George Ashworth is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+          </details>
+    </footer>
+
+</body>
+</HTML>

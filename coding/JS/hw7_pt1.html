@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!-- George Ashworth -->
+<!-- 12/5/23 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Clickable font and background options for a passage of text.">
+    <meta property="og:title" content="Homework 7 Part 1">
+    <meta property="og:url" content="https://hills.ccsf.edu/~gashwor1/hw7_pt1.html">
+    <meta property="og:description" content="Clickable font and background options for a passage of text.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile1.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="homework1.css"> 
+
+    <style>
+        .blue-color { background-color: #3bbccf; }
+        .green-color { background-color: #4aeb67; }
+        p.underline { text-decoration: underline; }
+        p.bold { font-weight: bold; }
+        p.italic { font-style: italic; }
+        p.small { font-size: 80%; }
+        p.medium {font-size: 120%; }
+        p.large {font-size: 180%; }
+        p.normal {font-size: 100%; }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#blue').on("click", function() { 
+                $('.grid-area-3').removeClass('green-color');
+                $('.grid-area-3').addClass('blue-color');
+            });
+            $('#green').on("click", function() { 
+                $('.grid-area-3').removeClass('blue-color');
+                $('.grid-area-3').addClass('green-color');
+            });
+            $('#original').on("click", function() { 
+                $('.grid-area-3').removeClass('blue-color');
+                $('.grid-area-3').removeClass('green-color');
+            });            
+
+            $('#underline').on("change", font_check);
+            $('#bold').on("change", font_check); 
+            $('#italic').on("change", font_check);
+
+            $('#font_size').on("change", size_check);
+
+            function font_check() {
+                const font_nodes = document.getElementsByName("font_styles");
+                var font_array = [];
+                for (let i=0; i<font_nodes.length; i++) {
+                    if (font_nodes[i].checked) {
+                        font_array.push(font_nodes[i].value);
+                        $('.content p').addClass(font_nodes[i].value);
+                    }
+                    else {
+                        $('.content p').removeClass(font_nodes[i].value);
+                    }
+                }
+            }
+
+            function size_check() {
+                var size_val = document.getElementById("font_size").value;
+
+                $('.content p').removeClass("small");
+                $('.content p').removeClass("medium");
+                $('.content p').removeClass("large");
+                $('.content p').removeClass("normal");
+                $('.content p').addClass(size_val);
+            }
+        });
+    </script>
+
+    <link rel="shortcut icon" href="satellite.png">
+    <title>Homework 7 Part 1</title>
+</head>
+
+<body class="grid">
+    <header class="grid-area grid-area-1">
+        <h1 style=text-align:center>Homework 7 Part 1</h1>
+    </header>
+
+    <aside class="grid-area grid-area-2">
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/index.html">Home</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw2.html">Homework 2</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3.html">Homework 3</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw4.html">Homework 4</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5.html">Homework 5</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7.html">Homework 6</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7.html">Homework 7</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw8.html">Homework 8</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main id="main_body" class="grid-area grid-area-3">
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7.html">Homework 7: Main</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7_pt2.html">Homework 7 Part 2: Navigation Bar</a></li>
+            </ul>
+        </nav>
+
+        <article id="content" class="content">
+            <h4>Magna Carta (29-30)</h4>
+            <p>No constable may compel a knight to pay money for castle-guard if the knight is willing to undertake the guard in person, or with reasonable excuse to supply some other fit man to do it.</p>
+            <p>A knight taken or sent on military service shall be excused from castle-guard for the period of this service.</p>
+            <p>No sheriff, royal official, or other person shall take horses or carts for transport from any free man, without his consent.</p>
+        </article>
+
+        <fieldset>
+            <legend><b>Color Options:</b></legend>
+            <p><label for="blue">Blue</label><input type="radio" value="blue" id="blue" name="color_options">
+            <label for="green">Green</label><input type="radio" value="green" id="green" name="color_options">
+            <label for="original">Original</label><input type="radio" value="original" id="original" name="color_options"></p>
+        </fieldset>
+        <br>
+
+        <fieldset>
+            <legend><b>Font Styles:</b></legend>
+            <p><label for="underline">Underline</label><input type="checkbox" value="underline" id="underline" name="font_styles">
+            <label for="bold">Bold</label><input type="checkbox" value="bold" id="bold" name="font_styles">
+            <label for="italic">Italic</label><input type="checkbox" value="italic" id="italic" name="font_styles"></p>
+        </fieldset>
+        <br>
+            
+        <p><label for="font_size"><b>Font Size:</b></label></p>
+        <select id="font_size" aria-label="Font Size">
+            <option value="normal" selected>Pick a font size</option>
+            <option value="small">80%</option>
+            <option value="medium">120%</option>
+            <option value="large">180%</option>
+        </select>
+        <br><br>
+    </main>
+
+    <footer class="grid-area grid-area-4 footer">
+        <a href="mailto:gashwor1@mail.ccsf.edu" class="email">Contact me via email</a>
+
+        <details class="triangle">
+            <summary><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" class="copyright"></a></summary>
+            CCSF CNIT133 Homework by George Ashworth is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+          </details>
+    </footer>
+
+</body>
+</HTML>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!-- George Ashworth -->
+<!-- 8/29/23 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Personal introduction and summary of previous web development education and experience.">
+    <meta property="og:title" content="CNIT 133 Homework">
+    <meta property="og:url" content="https://nirvanabear.github.io/website/pages/homework1.html">
+    <meta property="og:description" content="Personal introduction and summary of previous web development education and experience.">
+    <meta property="og:image" content="https://nirvanabear.github.io/website/pages/george_photo.jpg">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile1.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="homework1.css"> 
+
+    <!-- <link rel="stylesheet" href="homework1.css"> -->
+    <link rel="shortcut icon" href="satellite.png">
+    <title>CNIT 133 Homework</title>
+</head>
+
+<body class="grid">
+    <header class="grid-area grid-area-1">
+        <h1 style=text-align:center>CNIT 133 Homework</h1>
+    </header>
+
+    <aside class="grid-area grid-area-2">
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/index.html">Home</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw2.html">Homework 2</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3.html">Homework 3</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw4.html">Homework 4</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5.html">Homework 5</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw6.html">Homework 6</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7.html">Homework 7</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw8.html">Homework 8</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="grid-area grid-area-3">
+        <article>
+            <img style="float:left;" SRC="george_photo.jpg" alt="George's photo">
+            <h2>Hi!</h2><p>My name is George, and I work at a plumbing supply store in Marin County. I live in the east bay and have lived here for the past 13 years after moving here to finish my degree at UC Berkeley. I have been learning computer programming for the past five years through online CCSF classes while still working full time.</p>
+            <p>I am currently working on building out pages for my very first website. I've done some backend work before on a project called <a href="https://wevote.us/" target="_blank" rel="noopener noreferr">We Vote</a>, which is a non-profit website designed to help voters make choices aligned with their values. I worked on creating a unit test in python for one of its functions. The project involved forking the existing GitHub repository, cloning it to an AWS server, and setting up a virtual environment and environment variables in order to get a development version of the site up and running. This will be my first time creating front-end content.</p>
+        </article>
+
+        <aside>
+            <p>Read more about the development of the web during the <a href="https://www.techopedia.com/2/31579/networks/a-brief-history-of-web-development#the-turn-of-the-century" target="_blank" rel="noopener noreferr">start of the new millenium.</a></p>
+        </aside>
+
+        <hr>
+
+        <nav>
+            <h2><a href="https://www.youtube.com/watch?v=GZvSYJDk-us" target="_blank" rel="noopener noreferr">Understanding APIs</a></h2>
+            <ul>
+                <li ><a href="https://www.youtube.com/watch?v=DUg2SWWK18I">Model View Controller</a> - As I mentioned previously, most of my web studies have been on backend. This short video gives a good summary of the most common web framework design concept and shows how web applications process an HTTP request into a JSON reponse.</li>
+                <li><a href="https://www.youtube.com/watch?v=F5mRW0jo-U4" target="_blank" rel="noopener noreferr">Django</a> - This was the specific web framework used in the project I worked on. This gives a step-by-step overview of the whole process of getting a web application built. Coded in Python.</li>
+                <li><a href="https://boto3.amazonaws.com/v1/documentation/api/latest/guide/ec2-example-managing-instances.html" target="_blank" rel="noopener noreferr">boto3</a> - The development web app project was rather large and needed an AWS cloud server to store it. The EC2/Cloud 9 option web-based interface was pretty user friendly, but it also allowed for starting and stopping the instance with either a command line interface, or with Python script. This link details some of the uses and features of that Python library.</li>
+            </ul>
+        </nav>
+    </main>
+
+    <footer class="grid-area grid-area-4 footer">
+        <a href="mailto:gashwor1@mail.ccsf.edu" class="email">Contact me via email</a>
+
+        <details class="triangle">
+            <summary><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" class="copyright"></a></summary>
+            CCSF CNIT133 Homework by George Ashworth is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+          </details>
+    </footer>
+
+</body>
+</HTML>

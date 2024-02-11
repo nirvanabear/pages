@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<!-- George Ashworth -->
+<!-- 12/2/23 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Blank webpage for homework assignments.">
+    <meta property="og:title" content="Homework 7 part 2">
+    <meta property="og:url" content="https://hills.ccsf.edu/~gashwor1/hw7_pt2.html">
+    <meta property="og:description" content="Blank webpage for homework assignments.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile1.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="homework1.css"> 
+
+    <style>
+
+
+
+/* nav {background:#FFF; float:left;}
+nav ul {text-align:center;}
+nav ul li {float:left; display:inline;}
+nav ul li:hover {background:#E6E6E6;}
+nav ul li a {display:block; padding:15px 25px; color:#444; text-decoration:none; }
+nav ul li ul {position:absolute; width:120px; background:#444;}
+nav ul li ul li {width:120px;}
+nav ul li ul li a {display:block; padding:15px 10px; color:#FFF;}
+nav ul li ul li:hover a {background:#D1D1D1; color:#F00;}
+nav ul li ul.fallback {display:none;}
+nav ul li:hover ul.fallback {display:block;} */
+
+
+/* li { margin: 10px;} */
+
+
+
+/* .grid {
+    display: grid;
+    height: 100%; */
+    /* grid-gap: 10px; */
+    /* grid-template-columns: 150px auto auto auto;
+    grid-template-rows: 100px 100px auto 140px;
+} */
+/* minmax(330px, auto) */
+/* .grid-area {
+    font-family: Helvetica, Arial, sans-serif;
+    background-color: #c1d798;
+    color: #4a1595;
+    text-align: center;
+} */
+
+/* .grid-area-1 { grid-row-start: 1; grid-row-end: 2; grid-column-start: 1; grid-column-end: 5; padding: 12px; margin-top: 6px; }
+
+.grid-area-2 { grid-row-start: 2; grid-row-end: 3; grid-column-start: 1; grid-column-end: 2; text-align: left; }
+
+.grid-area-3 { grid-row-start: 2; grid-row-end: 3; grid-column-start: 2; grid-column-end: 5; text-align: left; padding: 0 10px; }
+
+.grid-area-4 {  grid-row-start: 4; grid-row-end: 5; grid-column-start: 1; grid-column-end: 5; text-align: left; padding: 10px 40px; margin-bottom: 10px;} */
+
+/* .new-grid-1 {
+    grid-row-start: 3; grid-row-end: 4; grid-column-start: 2; grid-column-end: 3;
+}
+.new-grid-2 {
+    grid-row-start: 3; grid-row-end: 4; grid-column-start: 3; grid-column-end: 4;
+}
+.new-grid-3 {
+    grid-row-start: 3; grid-row-end: 4; grid-column-start: 4; grid-column-end: 5;
+} */
+
+
+/* #mainMenu ul {
+  list-style-type: none;
+
+  padding: 0;
+} */
+        /* select { margin-left: 30px; } */
+        /* li { display: inline; } */
+
+        /* select { position: relative; } */
+        /* ol,ul {
+	list-style: none;
+}
+#mainMenu li {
+	display:block;
+	width:120px;
+	float:left;
+	margin-left:2px;
+	border:1px solid #000;
+}
+#mainMenu a {
+	display:block;
+	padding:3px;
+	text-decoration:none;
+	background-color:#fff;
+	color:#009;
+} */
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.drop_down').hide();
+            // $('#hw2').on("mouseover", goToNewPage);
+            $('#hw2').on("mouseover", function() { $('#hw2_links').show();});
+            $('#hw3').on("mouseover", function() { $('#hw3_links').show();});
+            $('#hw4').on("mouseover", function() { $('#hw4_links').show();});
+
+            $(document).click(function() { 
+                $('#hw2_links').hide();
+                $('#hw3_links').hide();
+                $('#hw4_links').hide();
+            });
+
+            $('#hw2_links').on("change", function() { 
+                // goToNewPage(this.form);
+                const weblink = document.getElementById("hw2_links").value;
+                window.open(weblink, '_blank');
+            });
+            $('#hw3_links').on("change", function() { 
+                // goToNewPage(this.form);
+                const weblink = document.getElementById("hw3_links").value;
+                window.open(weblink, '_blank');
+            });
+            $('#hw4_links').on("change", function() { 
+                // goToNewPage(this.form);
+                const weblink = document.getElementById("hw4_links").value;
+                window.open(weblink, '_blank');
+            });
+
+        });
+
+        // function goToNewPage(myForm) {
+        //     var myDestination = myForm.links.options[myForm.links.selectedIndex].value;
+        //     window.open(myDestination, '_blank');
+        // }
+    </script>
+
+    <link rel="shortcut icon" href="satellite.png">
+    <title>Homework 7 Part 2</title>
+</head>
+
+<body class="grid">
+    <header class="grid-area grid-area-1">
+        <h1 style=text-align:center>CNIT 133 Homework 7 Part 2</h1>
+    </header>
+
+    <aside class="grid-area grid-area-2">
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/index.html">Home</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw2.html">Homework 2</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3.html">Homework 3</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw4.html">Homework 4</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5.html">Homework 5</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7.html">Homework 6</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7.html">Homework 7</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw8.html">Homework 8</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="grid-area grid-area-3">
+
+        <nav>
+            <ul>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7.html">Homework 7: Main</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7_pt1.html">Homework 7 Part 1: Desc</a></li>
+                </a></li>
+            </ul>
+        </nav>
+        <br>
+        
+        <h4>Hover over links for more assignment details:</h4>
+
+
+        <article>
+            <nav>
+                <ul id="mainManu">
+                <li id="hw2" class="new-grid-1">
+                    <!-- <p> -->
+                        <label for="hw2_links"><a href="https://hills.ccsf.edu/~gashwor1/hw2.html">Homework 2</a></label>
+                    <!-- </p> -->
+                    <!-- <p> -->
+                        <select class="drop_down" id="hw2_links" name="links" aria-label="HW 2 Links">
+                            <option selected>Pick an assignment:
+                            <option value="https://hills.ccsf.edu/~gashwor1/hw2_pt1.html">Homework 2 Part 1</a></option>
+                            <option value="https://hills.ccsf.edu/~gashwor1/hw2_pt2.html">Homework 2 Part 2
+                            </a></option>
+                        </select>
+                    <!-- </p> -->
+                </li>
+
+                <li id="hw3" class="new-grid-2">
+                    <!-- <p> -->
+                        <label for="hw3_links"><a href="https://hills.ccsf.edu/~gashwor1/hw3.html">Homework 3</a></label>
+                    <!-- </p> -->
+                    <!-- <p> -->
+                        <select class="drop_down" id="hw3_links" name="links" aria-label="HW 3 Links">
+                            <option selected>Pick an assignment:
+                            <option value="https://hills.ccsf.edu/~gashwor1/hw3_pt1.html">Homework 3 Part 1</a></option>
+                            <option value="https://hills.ccsf.edu/~gashwor1/hw3_pt2.html">Homework 3 Part 2
+                            </a></option>
+                            <option value="https://hills.ccsf.edu/~gashwor1/hw3_ec.html">Homework 3 Extra Credit
+                            </a></option>
+                        </select>
+                    <!-- </p> -->
+                </li>
+
+                <li id="hw4" class="new-grid-3">
+                    <!-- <p> -->
+                        <label for="hw4_links"><a href="https://hills.ccsf.edu/~gashwor1/hw3.html">Homework 4</a></label>
+                    <!-- </p> -->
+                    <!-- <p> -->
+                        <select class="drop_down" id="hw4_links" name="links" aria-label="HW 4 Links">
+                            <option selected>Pick an assignment:
+                            <option value="https://hills.ccsf.edu/~gashwor1/hw4_pt1.html">Homework 4 Part 1</a></option>
+                            <option value="https://hills.ccsf.edu/~gashwor1/hw4_pt2.html">Homework 4 Part 2
+                            </a></option>
+                            <option value="https://hills.ccsf.edu/~gashwor1/hw4_ec.html">Homework 4 Extra Credit
+                            </a></option>
+                        </select>
+                    <!-- </p> -->
+                </li>
+                <!-- </ul> -->
+            </nav>
+            
+        </article>
+        <p>(Click away to hide details)</p>
+    </main>
+
+    <footer class="grid-area grid-area-4 footer">
+        <a href="mailto:gashwor1@mail.ccsf.edu" class="email">Contact me via email</a>
+
+        <details class="triangle">
+            <summary><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" class="copyright"></a></summary>
+            CCSF CNIT133 Homework by George Ashworth is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+          </details>
+    </footer>
+
+</body>
+</HTML>
