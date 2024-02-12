@@ -14,6 +14,11 @@
     <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile1.css">
     <link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="homework1.css"> 
 
+    <style>
+        h4 {margin-bottom: 7px;}
+        ul {margin-top: 0;}
+    </style>
+
     <!-- <link rel="stylesheet" href="homework1.css"> -->
     <link rel="shortcut icon" href="favicon-16x16.png">
     <title>George Ashworth</title>
@@ -30,8 +35,7 @@
                 <li><a href="https://nirvanabear.github.io/website/pages/index.html">Home</a></li>
                 <li><a href="https://nirvanabear.github.io/website/pages/resume-links.html">Resume Links</a></li>
                 <li><a href="https://nirvanabear.github.io/website/pages/blackjack.html">Blackjack</a></li>
-                <li><a href="https://nirvanabear.github.io/website/coding/JS/js.html">JavaScript Examples</a></li>
-                <li><a href="https://nirvanabear.github.io/website/pages/projects.html">Projects</a></li>
+                <li><a href="https://nirvanabear.github.io/website/coding/JS/js.html">JavaScript</a></li>
                 <li><a href="https://nirvanabear.github.io/website/pages/contact.html">Contact</a></li>
             </ul>
         </nav>
@@ -44,30 +48,49 @@
             <p>
                 I've been living in the east bay for the past 15 years. I currently work at a plumbing supply store in Marin county and I've been taking coding classes at CCSF off and on for about 5 years. I've stuck mostly with programming, learning things like SQL, Python, C++, HTML/CSS and Linux shell script. The web programming has been really rewarding because of the easily visible output you can create, so I'm taking another class here to expand on that.</p>
             <p>   
-                I'm hoping to give myself a wide base in programming to give myself both a breadth of understanding in various coding frameworks but also a focused concentration in writing code. Eventually I'd like to be working in the software development field. Not exactly sure where, but that is going to be a big project of mine in the next couple of months, figuring out which way I want to go. Web backend, web page design, application development, even a little machine learning. I've enjoyed bits of all of that, but it's time to pick a direction to forge ahead.
-            <p>    
-                "Have you eaten your rice porridge...? Then you had better wash your bowl."
-                - Zen monk Josen</p>
-            <p>
-                At least for myself, I feel like there's so much in our lives that draws our focus one way or another, all at once. It becomes bewildering trying to figure out what to respond to or prioritize first. The sentiment in the quote draws focus down to that which is most essential and encourages action to address the needs of the world around us.</p>
+                I'm hoping to give myself a wide base in programming to give myself both a breadth of understanding in various coding frameworks but also a focused concentration in writing code. Eventually I'd like to be working in the software development field. Not exactly sure where, but that is going to be a big project of mine in the next couple of months, figuring out which way I want to go. Web backend, web page design, application development, even a little machine learning. I've enjoyed bits of all of it.
+
         </article>
-
-        <!-- <hr> -->
-
-        <!-- <aside>
-            <p>See my previous website work <a href="https://nirvanabear.github.io/website/pages/" target="_blank" rel="noopener noreferr">here.</a></p>
-        </aside> -->
 
         <hr>
 
-        <nav>
-            <!-- <h2><a href="https://www.youtube.com/watch?v=GZvSYJDk-us" target="_blank" rel="noopener noreferr">Understanding APIs</a></h2> -->
-            <ul>
-                <li ><a href="https://www.youtube.com/watch?v=DUg2SWWK18I">Model View Controller</a> - Most of my web studies have been on backend. This short video gives a good summary of the most common web framework design concept and shows how web applications process an HTTP request into a JSON reponse.</li>
-                <li><a href="https://www.youtube.com/watch?v=F5mRW0jo-U4" target="_blank" rel="noopener noreferr">Django</a> - This was the specific web framework used in the project I worked on. This gives a step-by-step overview of the whole process of getting a web application built. Coded in Python.</li>
-                <li><a href="https://boto3.amazonaws.com/v1/documentation/api/latest/guide/ec2-example-managing-instances.html" target="_blank" rel="noopener noreferr">boto3</a> - The development web app project was rather large and needed an AWS cloud server to store it. The EC2/Cloud 9 option web-based interface was pretty user friendly, but it also allowed for starting and stopping the instance with either a command line interface, or with Python script. This link details some of the uses and features of that Python library.</li>
-            </ul>
-        </nav>
+        <article>
+            <h3>Some projects:</h3>
+            <h4>France Université Numérique - Inria		Machine Learning	2/22 – 5/22</h4>
+                <ul>	
+                    <li> Engineered over 30 machine learning models using Python’s scikit-learn, pandas, numpy & Jupyter.</li>
+                    <li> Developed training/testing/validation splits on seven datasets with up to 80 features & 45,000 samples.</li>
+                    <li> Designed preprocessing pipelines with numerical data normalization & encoding of categorical data.</li>
+                    <li> Created bagging-&-boosting, tree-based ensembles & ridge regression models with non-linear features.</li>
+                    <li> Evaluated computational performance with nested cross-validation, dummy classifiers & visualizations. </li>
+                    <li> Built matplotlib data visualizations of histograms, scatterplots, validation curves, box plots & heatmaps.</li>
+                </ul>
+
+            <h4>Linux Foundation				LFS158x: Introduction to Kubernetes	10/22 – 12/22</h4>
+                <ul>
+                    <li> Employed Minikube & a VMware hypervisor to create a single-node Kubernetes cluster.</li>
+                    <li> Launched 6 Deployments, involving over 20 Pods, through kubectl using images from Docker Hub.</li>
+                    <li> Created authentication keys with openssl & established namespace authorization via RoleBinding.</li>
+                    <li> Exposed 9 Services including one with an Ingress reverse proxy enabling name-based virtual hosting.</li>
+                    <li> Introduced logging using DaemonSets & enhanced Pods with ConfigMaps, Secrets & a shared Volume.</li>
+                    <li> Monitored Pods with Liveness and Readiness Probes and enforced Traffic Policies with kube-proxy.</li>
+                </ul>
+            <h4>WeVote.us - Open-Source Project	3/21 – 6/21</h4>
+                <ul>
+                    <li> Collaborated with a 3-person team, using Git workflow, on We Vote, a voter guide with 50,000+ users.</li>
+                    <li> Created a sandbox Django framework & PostgreSQL database to understand Model View Controller.</li>
+                    <li> Developed code for controlling AWS EC2 instance using Python’s boto3 & enabling SSH connection.</li>
+                    <li> Refined techniques for navigating a large codebase, such as tracing the flow of code & grep search.</li>
+                    <li> Documented team’s unit test engineering plan with high-level code summary & index of relevant files. </li>
+                    <li> Submitted pull request for an HTML-response unit test that was accepted and merged with source code.</li>
+                </ul>
+        </article>
+
+        <hr>
+
+        <p>    
+            "Have you eaten your rice porridge...? Then you had better wash your bowl."
+            - Zen monk Josen</p>
     </main>
 
     <footer class="grid-area grid-area-4 footer">

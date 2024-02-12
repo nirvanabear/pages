@@ -1,5 +1,5 @@
 
-:root { --reqd: rgb(69, 23, 116); --blue: #65c2dc; --purple: #ae59d5; --orange: #e4aa46; --links: #f735cd; --border: #0d0dee; --beige: #bbbbdc; --visited:  #a6258a; --dpurple: #492f6f; --ddpurple: #0b096f; --title: #ad1b89; --menu: #de32b3; }
+:root { --reqd: rgb(69, 23, 116); --blue: #65c2dc; --bblue: #59BDD9; --purple: #ae59d5; --font: #4C1796; --orange: #e5c999; --links: #6F1B5B; --border: #0d0dee; --beige: #dbd8c0; --visited:  #97217D; --dpurple: #492f6f; --ddpurple: #0b096f; --title: #E246BB; --menu: #E78DD6; }
 /* #0e0edc */
 html { height: 100%; }
 
@@ -13,8 +13,7 @@ html { height: 100%; }
 /* minmax(330px, auto) */
 .grid-area {
     font-family: Helvetica, Arial, sans-serif;
-    background-color: #c1d798;
-    color: #4a1595;
+    color: var(--font);
     text-align: center;
 }
 
@@ -58,9 +57,11 @@ h1 { color: var(--title); }
 
 .grid-area-3 a:visited { color: var(--visited); }
 
-.grid-area-4 a:link { color: var(--links); }
+.grid-area-4 a:link { color: var(--title); }
 
-.grid-area-4 a:visited { color: var(--visited); }
+.grid-area-4 a:visited { color: var(--menu); }
+
+.grid-area-4 details { color: var(--bblue); }
 
 .screenshot { max-width: 100%; }
 
