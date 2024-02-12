@@ -14,6 +14,17 @@
     <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile1.css">
     <link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="homework1.css"> 
 
+    <script>
+        // Navigation menu
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('nav.html')
+            .then(res => res.text())
+            .then(text => {
+                document.getElementById("nav_menu").innerHTML = text;
+            })
+        });
+    </script>
+
     <link rel="shortcut icon" href="satellite.png">
     <title>Homework 6</title>
 </head>
@@ -24,19 +35,7 @@
     </header>
 
     <aside class="grid-area grid-area-2">
-        <nav>
-            <ul>
-                <li><a href="https://hills.ccsf.edu/~gashwor1/index.html">Home</a></li>
-                <li><a href="https://hills.ccsf.edu/~gashwor1/hw2.html">Homework 2</a></li>
-                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3.html">Homework 3</a></li>
-                <li><a href="https://hills.ccsf.edu/~gashwor1/hw4.html">Homework 4</a></li>
-                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5.html">Homework 5</a></li>
-                <li><a href="https://hills.ccsf.edu/~gashwor1/hw6.html">Homework 6</a></li>
-                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7.html">Homework 7</a></li>
-                <li><a href="https://hills.ccsf.edu/~gashwor1/hw8.html">Homework 8</a></li>
-                <li><a href="https://hills.ccsf.edu/~gashwor1/contact.html">Contact</a></li>
-            </ul>
-        </nav>
+        <div id="nav_menu"></div>
     </aside>
 
     <main class="grid-area grid-area-3">

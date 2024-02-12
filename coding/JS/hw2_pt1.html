@@ -17,10 +17,19 @@
     <script>
         function colored_letters()
         {
-        document.write("<span style = 'color: red; font-size: 22px; font-weight: bold; font-family: \"Times New Roman\";'>xy </span>")
-        document.write("<span style = 'color: blue; font-size: 22px; font-family: Arial;'>12 </span>")
-        document.write("<span style = 'color: green; font-size: 22px; font-family: Impact; font-style: italic;'>89</span>")
+            document.write("<span style = 'color: red; font-size: 22px; font-weight: bold; font-family: \"Times New Roman\";'>xy </span>")
+            document.write("<span style = 'color: blue; font-size: 22px; font-family: Arial;'>12 </span>")
+            document.write("<span style = 'color: green; font-size: 22px; font-family: Impact; font-style: italic;'>89</span>")
         }
+
+        // Navigation menu
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('nav.html')
+            .then(res => res.text())
+            .then(text => {
+                document.getElementById("nav_menu").innerHTML = text;
+            })
+        });
     </script>
 
     <!-- <link rel="stylesheet" href="homework1.css"> -->
@@ -34,19 +43,7 @@
     </header>
 
     <aside class="grid-area grid-area-2">
-        <nav>
-            <ul>
-                <li><a href="https://hills.ccsf.edu/~gashwor1/index.html">Home</a></li>
-                <li><a href="https://hills.ccsf.edu/~gashwor1/hw2.html">Homework 2</a></li>
-                <li><a href="https://hills.ccsf.edu/~gashwor1/hw3.html">Homework 3</a></li>
-                <li><a href="https://hills.ccsf.edu/~gashwor1/hw4.html">Homework 4</a></li>
-                <li><a href="https://hills.ccsf.edu/~gashwor1/hw5.html">Homework 5</a></li>
-                <li><a href="https://hills.ccsf.edu/~gashwor1/hw6.html">Homework 6</a></li>
-                <li><a href="https://hills.ccsf.edu/~gashwor1/hw7.html">Homework 7</a></li>
-                <li><a href="https://hills.ccsf.edu/~gashwor1/hw8.html">Homework 8</a></li>
-                <li><a href="https://hills.ccsf.edu/~gashwor1/contact.html">Contact</a></li>
-            </ul>
-        </nav>
+        <div id="nav_menu"></div>
     </aside>
 
     <main class="grid-area grid-area-3">
