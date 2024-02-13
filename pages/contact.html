@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile1.css">
-    <link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="homework1.css"> 
+    <!-- <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile1.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="homework1.css">  -->
+    <link rel="stylesheet" type="text/css" href="website/style1.css"> 
+    
+    <script>
+        // Navigation menu
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('nav.html')
+            .then(res => res.text())
+            .then(text => {
+                document.getElementById("nav_menu").innerHTML = text;
+            })
+        });
+    </script>
 
     <title>Contact</title>
     <link rel="shortcut icon" href="favicon-16x16.png">
@@ -15,16 +27,8 @@
     </header>
 
     <aside class="grid-area grid-area-2">
-        <nav>
-            <ul>
-                <li><a href="https://nirvanabear.github.io/website/">Home</a></li>
-                <li><a href="https://nirvanabear.github.io/website/pages/resume-links.html">Resume Links</a></li>
-                <li><a href="https://nirvanabear.github.io/website/pages/blackjack/blackjack.html">Blackjack</a></li>
-                <li><a href="https://nirvanabear.github.io/website/coding/JS/js.html">JavaScript</a></li>
-                <li><a href="https://nirvanabear.github.io/website/pages/contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </aside>  
+        <div id="nav_menu"></div>
+    </aside>
 
     <section class="grid-area grid-area-3">
         <article>
