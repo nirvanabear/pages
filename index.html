@@ -4,23 +4,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Personal introduction and summary of previous web development education and experience.">
-    <meta property="og:title" content="George Ashworth - CNIT 132">
-    <meta property="og:url" content="https://nirvanabear.github.io/website/pages/homework1.html">
-    <meta property="og:description" content="Personal introduction and summary of previous web development education and experience.">
-    <meta property="og:image" content="https://nirvanabear.github.io/website/pages/george_photo.jpg">
+    <meta name="description" content="Personal introduction and summary of previous development education and experience.">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile1.css">
-    <!-- <link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="homework1.css">  -->
-    <link rel="stylesheet" type="text/css" href="website/style1.css"> 
+    <meta property="og:title" content="George Ashworth">
+    <meta property="og:url" content="https://nirvanabear.github.io/website/index.html">
+    <meta property="og:description" content="Personal introduction and summary of previous web development education and experience.">
+    <meta property="og:image" content="https://nirvanabear.github.io/website/images/george_photo.jpg">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/style1.css"> 
 
     <style>
         h4 {margin-bottom: 7px;}
         ul {margin-top: 0;}
     </style>
 
-    <!-- <link rel="stylesheet" href="homework1.css"> -->
+    <script>
+        // Navigation menu
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('main_nav.html')
+            .then(res => res.text())
+            .then(text => {
+                document.getElementById("nav_menu").innerHTML = text;
+            })
+        });
+    </script>
+
     <link rel="shortcut icon" href="favicon-16x16.png">
     <title>George Ashworth</title>
 </head>
@@ -31,20 +40,12 @@
     </header>
 
     <aside class="grid-area grid-area-2">
-        <nav>
-            <ul>
-                <li><a href="https://nirvanabear.github.io/website/">Home</a></li>
-                <li><a href="https://nirvanabear.github.io/website/pages/resume-links.html">Resume Links</a></li>
-                <li><a href="https://nirvanabear.github.io/website/pages/blackjack/blackjack.html">Blackjack</a></li>
-                <li><a href="https://nirvanabear.github.io/website/coding/JS/js.html">JavaScript</a></li>
-                <li><a href="https://nirvanabear.github.io/website/pages/contact.html">Contact</a></li>
-            </ul>
-        </nav>
+        <div id="nav_menu"></div>
     </aside>
 
     <main class="grid-area grid-area-3">
         <article>
-            <img style="float:left;" SRC="george_photo.jpg" alt="George's photo">
+            <img style="float:left;" SRC="images/george_photo.jpg" alt="George's photo">
             <h2>Howdy, all!</h2>
             <p>
                 I've been living in the east bay for the past 15 years. I currently work at a plumbing supply store in Marin county and I've been taking coding classes at CCSF off and on for about 5 years. I've stuck mostly with programming, learning things like SQL, Python, C++, HTML/CSS and Linux shell script. The web programming has been really rewarding because of the easily visible output you can create, so I'm taking another class here to expand on that.</p>
