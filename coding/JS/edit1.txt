@@ -1,0 +1,4 @@
+<link rel="stylesheet" type="text/css" href="../../stylesheets/style1.css">
+<meta property="og:url" content="https://nirvanabear.github.io/website/coding/JS/XXXXX.html">
+https://hills.ccsf.edu/~gashwor1/
+https://nirvanabear.github.io/website/coding/JS/
