@@ -133,8 +133,8 @@ const int MINVALUE = 1;
 unsigned long long int inputToInt(int&, string);
 string yesOrNo(char*);
 string convertYesNo(int);
-void playersHand(int &, int &, int &, int &, int &, int, int &, Dealer &);
-void dealersHand(int &, int &, int &, int &, int, int, int, Dealer &);
+void playersHand(int &, int &, int &, int &, int &, int, int &, Dealer &, int &);
+void dealersHand(int &, int &, int &, int &, int, int, int, Dealer &, int &);
 void outcomes(int, int, int, int, int, int, int, int, int &);
 
 
@@ -165,11 +165,11 @@ int main() {
         int bet = 0;
         int insuranceBet = 0;
 
-        playersHand(total, blackjack, bust, bet, insuranceBet, dealerTotal, dealerBJack, pokerAlice);
+        playersHand(total, blackjack, bust, bet, insuranceBet, dealerTotal, dealerBJack, pokerAlice, playerWinnings);
 
         int dealerBust = 0;
 
-        dealersHand(dealerTotal, dealerBJack, dealerBust, bet, bust, blackjack, total, pokerAlice);
+        dealersHand(dealerTotal, dealerBJack, dealerBust, bet, bust, blackjack, total, pokerAlice, playerWinnings);
 
         outcomes(total, dealerTotal, bust, dealerBust, blackjack, dealerBJack, bet, insuranceBet, playerWinnings);
 
@@ -179,9 +179,11 @@ int main() {
         cout << anotherHand << endl;
         // keepPlaying = yesOrNo(anotherHand);
          
-        bool playBool = EM_ASM_INT(
-            let play = confirm("Do you want to play again?");
-            return play;);
+        bool playBool = EM_ASM_INT({
+            let message = "Do you want to play again? \nCurrent Winnings: " + $0;
+            let play = confirm(message);
+            return play;}, playerWinnings
+            );
         keepPlaying = convertYesNo(playBool);         
 
     } while(pokerAlice.deckCount() > 0 && (keepPlaying == "y" || keepPlaying == "Y"));
@@ -189,16 +191,34 @@ int main() {
 
     if (pokerAlice.deckCount() <= 0) {
         printf("The deck is empty! Go home!\n");
+        int alert = EM_ASM_INT(
+            let alert1 = alert("The deck is empty! Go home!\n");
+            return 0;
+        );
     }
 
     if (playerWinnings > 0) {
         printf("\nYou've won ￦%d.\nCongratulations!\n", playerWinnings);
+        int alert = EM_ASM_INT({
+            let message = "\nYou've won ￦" + $0 + "\nCongratulations!\n";
+            let alert1 = alert(message);
+            return 0;}, playerWinnings
+        );
     }
     else if (playerWinnings < 0) {
         printf("You've lost ￦%d.\nSorry, sucker.\n", playerWinnings);
+        int alert = EM_ASM_INT({
+            let message = "You've lost ￦"  + $0 + "\nSorry, sucker.\n";
+            let alert1 = alert(message);
+            return 0;}, playerWinnings
+        );
     }
     else
         printf("Hope you had fun!\n");
+        int alert = EM_ASM_INT(
+            let alert1 = alert("Hope you had fun!\n");
+            return 0;
+        );
 
     return 0;
 }
@@ -283,7 +303,7 @@ string convertYesNo(int jsOut) {
 }
 
 
-void playersHand(int &total, int &blackjack, int &bust, int &bet, int &insuranceBet, int dealerTotal, int &dealerBJack, Dealer &pokerAlice) {
+void playersHand(int &total, int &blackjack, int &bust, int &bet, int &insuranceBet, int dealerTotal, int &dealerBJack, Dealer &pokerAlice, int &playerWinnings) {
 
     int nullResponse = 0;
     total = 0;
@@ -294,9 +314,12 @@ void playersHand(int &total, int &blackjack, int &bust, int &bet, int &insurance
     pokerAlice.resetAce();
 
     // bet = inputToInt(nullResponse, "Place your bets!");
-    bet = EM_ASM_INT(
-    let number = prompt("Place your bets!");
-    return number;
+    bet = EM_ASM_INT({   
+        let total = $0;
+        let message = "Current winnings: " + total.toString() + "\nPlace your bets!";
+        let number = prompt(message);
+        return number; 
+        }, playerWinnings
     );
 
 
@@ -307,9 +330,12 @@ void playersHand(int &total, int &blackjack, int &bust, int &bet, int &insurance
     if (pokerAlice.getDealerCard1() == "A") {
         int noInsurance = 0;
         // insuranceBet = inputToInt(noInsurance, "Place insurance bet, or press [enter] to decline: ");
-        insuranceBet = EM_ASM_INT(
-        let number = prompt("Place insurance bet, or press [enter] to decline: ");
-        return number;
+        insuranceBet = EM_ASM_INT({
+            let dealerCard = UTF8ToString($0);
+            let message = "Dealer shows: " + dealerCard + "\nPlace insurance bet, or press [enter] to decline: ";
+            let number = prompt(message);
+            return number;
+            }, pokerAlice.getDealerCard1().c_str()
         );
 
     }
@@ -326,12 +352,20 @@ void playersHand(int &total, int &blackjack, int &bust, int &bet, int &insurance
         firstCard = pokerAlice.draw(total);
         currentCard = pokerAlice.draw(total);
         
-        printf("First cards: %s, %s\n", firstCard.c_str(), currentCard.c_str());
+        string playersCards = "Player's cards: " + firstCard + ", " + currentCard;
+        printf("Player's cards: %s, %s\n", firstCard.c_str(), currentCard.c_str());
+        string cardTotal = "Total: " + to_string(total);
         printf("Total: %d\n", total);
 
         if (total == 21) {
             blackjack = 1;
             cout << "Blackjack!" << endl;
+            cardTotal += "\nBlackjack!";
+            int alert = EM_ASM_INT({
+                let message = UTF8ToString($0);
+                let alert1 = alert(message);
+                return 0;}, cardTotal.c_str()
+            );
         }
 
         string deal;
@@ -340,16 +374,26 @@ void playersHand(int &total, int &blackjack, int &bust, int &bet, int &insurance
         do {
             if (counter) {
                 currentCard = pokerAlice.draw(total);
+
+                playersCards += ", " + currentCard;
                 printf("Card: %s\n", currentCard.c_str());
+                cardTotal = "Total:" + to_string(total);
                 printf("Total: %d\n", total);
             }
 
             if (total == 21) {
                 cout << "Vingt-et-Un!" << endl;
+                cardTotal += "\nVingt-et-Un!";
+                int alert = EM_ASM_INT({
+                    let message = UTF8ToString($0) + "\nPlayer's total: " + $1 + "\nVingt-et-Un!";
+                    let alert1 = alert(message);
+                    return 0;}, playersCards.c_str(), total
+                );
                 break;
             }
             else if (total > 21) {
                 cout << "Bust!" << endl;
+                cardTotal += "\nBust!";
                 bust = 1;
                 break;
             }
@@ -357,9 +401,11 @@ void playersHand(int &total, int &blackjack, int &bust, int &bet, int &insurance
             char anotherCard[] = "Do you want another card?";
             cout << anotherCard << endl;
             // deal = yesOrNo(anotherCard);
-            bool dealBool = EM_ASM_INT(
-                let hitStay = confirm("Do you want another card?");
-                return hitStay;);
+            bool dealBool = EM_ASM_INT({
+                let message = "Dealer shows: " + UTF8ToString($0) + ", ?\n" + UTF8ToString($1) + "\nPlayer's total: " + $2 + "\nDo you want another card?";
+                let hitStay = confirm(message);
+                return hitStay;}, pokerAlice.getDealerCard1().c_str(), playersCards.c_str(), total
+            );
             deal = convertYesNo(dealBool); 
             counter++;
         }
@@ -368,7 +414,7 @@ void playersHand(int &total, int &blackjack, int &bust, int &bet, int &insurance
 }
 
 
-void dealersHand(int &dealerTotal, int &dealerBJack, int &dealerBust, int &bet, int bust, int blackjack, int total, Dealer &pokerAlice) {
+void dealersHand(int &dealerTotal, int &dealerBJack, int &dealerBust, int &bet, int bust, int blackjack, int total, Dealer &pokerAlice, int &playerWinnings) {
 
     string firstCard;
     string currentCard;
@@ -386,19 +432,38 @@ void dealersHand(int &dealerTotal, int &dealerBJack, int &dealerBust, int &bet, 
         // firstCard = pokerAlice.draw(dealerTotal);
         // currentCard = pokerAlice.draw(dealerTotal);
 
-        printf("Dealer's first cards: %s, %s\n", pokerAlice.getDealerCard1().c_str(), pokerAlice.getDealerCard2().c_str());
+        // string dealersCards = "Dealer's cards: %s, %s\n", pokerAlice.getDealerCard1().c_str(), pokerAlice.getDealerCard2().c_str();
+        printf("Dealer's cards: %s, %s\n", pokerAlice.getDealerCard1().c_str(), pokerAlice.getDealerCard2().c_str());
+        // string dealersTotal = "Dealer's total: %d\n", dealerTotal;
         printf("Dealer's total: %d\n", dealerTotal);
         // cin.get(); 
+
+        alert = EM_ASM_INT({
+            // TODO // Keep working from here to update.
+            let message =  "Dealer's cards: " + UTF8ToString($0) + ", " + UTF8ToString($1) + "\nDealer's total: " + $2;
+            let alert1 = alert(message);
+            return 0;}, pokerAlice.getDealerCard1().c_str(), pokerAlice.getDealerCard2().c_str(), dealerTotal
+        );
 
         if (dealerTotal == 21) {
             dealerBJack = 1;
         }   
 
+        string allDealerCards = pokerAlice.getDealerCard1() + ", " + pokerAlice.getDealerCard2();
+
         while(dealerTotal < 17 && dealerTotal < total) {
-                currentCard = pokerAlice.draw(dealerTotal);
-                printf("Dealer's card: %s\n", currentCard.c_str());
-                printf("Dealer's total: %d\n\n", dealerTotal);
-                // cin.get();
+            currentCard = pokerAlice.draw(dealerTotal);
+            allDealerCards += ", " + currentCard;
+            printf("Dealer's card: %s\n", currentCard.c_str());
+            // dealersTotal = "Dealer's total: %d\n\n", dealerTotal;
+            printf("Dealer's total: %d\n\n", dealerTotal);
+            // cin.get();
+            // dealersCards += ", " + currentCard.c_str();
+            alert = EM_ASM_INT({
+                let message =  "Dealer's cards: " + UTF8ToString($0) + "\nDealer's total: " + $1;
+                let alert1 = alert(message);
+                return 0;}, allDealerCards.c_str(), dealerTotal
+            );
 
         }
         if (dealerTotal > 21) {
@@ -413,35 +478,72 @@ void outcomes(int total, int dealerTotal, int bust, int dealerBust, int blackjac
         cout << "Dealer busts!" << endl;
         cout << "You win ￦" << bet << "!" << endl;
         playerWinnings += bet;
+        int alert = EM_ASM_INT({
+                    let message = "Dealer busts! \nYou win ￦" + $0;
+                    let alert1 = alert(message);
+                    return 0;}, bet
+                );
     }
     else if ((dealerTotal > total && !dealerBust) || bust) {
         cout << "You lose ￦" << bet << "!" << endl;
         playerWinnings -= bet;
         // cout << "Winnings: " << playerWinnings << endl;
+        int alert = EM_ASM_INT({
+                    let message = "You lose ￦" + $0;
+                    let alert1 = alert(message);
+                    return 0;}, bet
+                );
     }
     else if (dealerTotal == total) {
         if (blackjack && dealerBJack) {
             cout << "Blackjack standoff!" << endl;
+            int alert = EM_ASM_INT({
+                    let alert1 = alert("Blackjack standoff!");
+                    return 0;}
+            );
         }
         else if (blackjack) {
             cout << "Blackjack! You win ￦" << bet << "!" << endl;
             playerWinnings += bet;
+            int alert = EM_ASM_INT({
+                    let alert1 = alert("Blackjack standoff!");
+                    return 0;}
+            );
         }
         else if (dealerBJack) {
             cout << "Dealer's blackjack! You lose ￦" << bet << "!" << endl;
+            int alert = EM_ASM_INT({
+                    let message = "Dealer's blackjack! You lose ￦" + $0;
+                    let alert1 = alert(message);
+                    return 0;}, bet
+            );
             if (insuranceBet > 0) {
                 cout << "But you bet insurance of ￦" << insuranceBet << endl;
                 cout << "You win ￦" << insuranceBet * 2 << endl;
                 playerWinnings += insuranceBet * 2;
+                int alert = EM_ASM_INT({
+                    let message = "But you won insurance bet of ￦" + $0;
+                    let alert1 = alert(message);
+                    return 0;}, (insuranceBet * 2)
+                );
             }
             playerWinnings -= bet;
         }
         else
             cout << "Standoff!" << endl;
+            int alert = EM_ASM_INT({
+                    let alert1 = alert("Standoff!");
+                    return 0;}
+            );
     }
     else {
         cout << "You win ￦" << bet << "!" << endl;
         playerWinnings += bet;
+        int alert = EM_ASM_INT({
+                    let message = "You win ￦" + $0;
+                    let alert1 = alert(message);
+                    return 0;}, bet
+                );
     }
     
     printf("Current total winnings: ￦%d\n", playerWinnings);
