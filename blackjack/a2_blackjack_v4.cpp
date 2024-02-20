@@ -327,16 +327,17 @@ void playersHand(int &total, int &blackjack, int &bust, int &bet, int &insurance
 
     cout << endl << "Dealer shows: " << pokerAlice.getDealerCard1() << ", ?" << endl << endl;
 
-    if (pokerAlice.getDealerCard1() == "A") {
-        int noInsurance = 0;
-        // insuranceBet = inputToInt(noInsurance, "Place insurance bet, or press [enter] to decline: ");
-        insuranceBet = EM_ASM_INT({
-            let dealerCard = UTF8ToString($0);
-            let message = "Dealer shows: " + dealerCard + "\nPlace insurance bet, or press [enter] to decline: ";
-            let number = prompt(message);
-            return number;
-            }, pokerAlice.getDealerCard1().c_str()
-        );
+    // if (pokerAlice.getDealerCard1() == "A") {
+    //     // int noInsurance = 0;
+    //     // insuranceBet = inputToInt(noInsurance, "Place insurance bet, or press [enter] to decline: ");
+    //     insuranceBet = EM_ASM_INT({
+    //         let dealerCard = UTF8ToString($0);
+    //         let message = "Dealer shows: " + dealerCard + "\nPlace insurance bet, or press [enter] to decline: ";
+    //         let number = prompt(message);
+    //         return number;
+    //         }, pokerAlice.getDealerCard1().c_str()
+    //     );
+        
 
     }
     // TODO // Change in playerWinnings if insurance bet loses.
@@ -506,8 +507,9 @@ void outcomes(int total, int dealerTotal, int bust, int dealerBust, int blackjac
             cout << "Blackjack! You win ￦" << bet << "!" << endl;
             playerWinnings += bet;
             int alert = EM_ASM_INT({
-                    let alert1 = alert("Blackjack standoff!");
-                    return 0;}
+                    let message = "Blackjack! You win ￦" + $0 + "!";
+                    let alert1 = alert(message);
+                    return 0;}, bet
             );
         }
         else if (dealerBJack) {
@@ -517,16 +519,16 @@ void outcomes(int total, int dealerTotal, int bust, int dealerBust, int blackjac
                     let alert1 = alert(message);
                     return 0;}, bet
             );
-            if (insuranceBet > 0) {
-                cout << "But you bet insurance of ￦" << insuranceBet << endl;
-                cout << "You win ￦" << insuranceBet * 2 << endl;
-                playerWinnings += insuranceBet * 2;
-                int alert = EM_ASM_INT({
-                    let message = "But you won insurance bet of ￦" + $0;
-                    let alert1 = alert(message);
-                    return 0;}, (insuranceBet * 2)
-                );
-            }
+            // if (insuranceBet > 0) {
+            //     cout << "But you bet insurance of ￦" << insuranceBet << endl;
+            //     cout << "You win ￦" << insuranceBet * 2 << endl;
+            //     playerWinnings += insuranceBet * 2;
+            //     int alert = EM_ASM_INT({
+            //         let message = "But you won insurance bet of ￦" + $0;
+            //         let alert1 = alert(message);
+            //         return 0;}, (insuranceBet * 2)
+            //     );
+            // }
             playerWinnings -= bet;
         }
         else
