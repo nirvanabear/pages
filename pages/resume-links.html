@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- George Ashworth -->
-<!-- 2/21/22 -->
+<!-- 2/25/24 -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,10 +13,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <link rel="stylesheet" type="text/css" href="../stylesheets/style1.css"> 
 
+    <style>
+        p {
+            margin-bottom: 0px; 
+            margin-top: 0px;
+        }
+        li { margin-bottom: 30px; }
+        .link { padding-inline-start: 15px; }
+        img { 
+            border: 1px solid #492f6f; 
+        }
+        li p iframe {
+            padding-inline-start: 10px;
+        }
+
+        .container {
+            /* We first create a flex layout context */
+            display: flex;
+            /* Define the flow direction and allow to wrap */
+            flex-flow: row wrap;
+            /* How the remaining space is distributed */
+            justify-content: space-around;
+            
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+    </style>
+
     <script>
         // Navigation menu
         document.addEventListener("DOMContentLoaded", function () {
-            fetch('../main_nav.html')
+            fetch('nav.html')
             .then(res => res.text())
             .then(text => {
                 document.getElementById("nav_menu").innerHTML = text;
@@ -24,7 +53,7 @@
         });
     </script>
 
-    <link rel="shortcut icon" href="favicon-16x16.png">
+    <link rel="shortcut icon" href="../images/favicon-16x16.png">
     <title>Resume Links</title>
 </head>
 <body class="grid">
@@ -38,14 +67,45 @@
 
     <main class="grid-area grid-area-3">
         <article>
-            <p>Links to the projects mentioned in my resume:</p>
-            <br>
-            <ul>
-                <li><a href="https://www.youtube.com/watch?v=n7GVK17-SBs" target="_blank" rel="noopener noreferr">CalTV: Cal Football vs. Stanfurd</a></li>
-                <li><a href="https://github.com/upluke/WeVoteServer/blob/campaignRetrieveTests/apis_v1/tests/test_campaign_retrieve.py" target="_blank" rel="noopener noreferr">We Vote Unit Test Pull Request</a></li>    
-                <li><a href="https://github.com/nirvanabear/code-horde/tree/master/cti" target="_blank" rel="noopener noreferr">Coding Challenges</a></li>
-                <li><a href="https://github.com/CodeLabs-2021/self-driving/tree/george" target="_blank" rel="noopener noreferr">Self-Driving Robot Internship</a></li>
-                <li><a href="https://github.com/CodeLabs-2021/self-driving/tree/george" target="_blank" rel="noopener noreferr">Self-Driving Robot Video Presentation</a></li>        
+            <p style="height:30px;"></p>
+
+            <div class="container">
+                <div style="margin-bottom: 20px;">
+                    <p><a href="https://www.linkedin.com/in/george-k-ashworth/" target="_blank" rel="noopener noreferr"><img width="300px" height="auto" SRC="../images/LinkedIn.png" alt="Data visualization example."></a></p>
+                    <p style="padding-inline-start: 20px;"><a href="https://www.linkedin.com/in/george-k-ashworth/" target="_blank" rel="noopener noreferr">LinkedIn</a></p>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <p><a href="https://github.com/nirvanabear" target="_blank" rel="noopener noreferr"><img width="300px" height="auto" SRC="../images/GitHub.png" alt="Data visualization example."></a></p>
+                    <p style="padding-inline-start: 20px;"><a href="https://github.com/nirvanabear" target="_blank" rel="noopener noreferr">GitHub</a></p>
+                </div>
+            </div>
+
+            <p style="height:30px;"></p>
+            <h3><strong>Links to the projects mentioned in my resume:</strong></h3>
+            
+            <ul style="list-style-type:none;">
+
+                <li><p><iframe width="300px" height="auto" src="https://www.youtube.com/embed/SxRqTDSaTY8" title="CodeDay Labs Presentation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>
+                <p class="link"><a href="https://github.com/CodeLabs-2021/self-driving/tree/george" target="_blank" rel="noopener noreferr">Self-Driving Robot Internship Repository</a></p>
+                <p class="link"><a href="https://showcase.codeday.org/project/ckqtyhtky91739010qujxqrui2l" target="_blank" rel="noopener noreferr">Self-Driving Robot Video Presentation</a></p></li>
+
+                <li><p><a href="https://www.fun-mooc.fr/fr/cours/machine-learning-python-scikit-learn/" target="_blank" rel="noopener noreferr"><img width="300px" height="auto" SRC="../images/scikit-learnBoundary.png" alt="Data visualization example."></a></p>
+                <p class="link"><a href="https://github.com/nirvanabear/scikit-learn-mooc" target="_blank" rel="noopener noreferr">Inria Machine Learning with scikit-learn Repository</a></p></li>
+
+                <li><p><a href="https://www.edx.org/learn/kubernetes/the-linux-foundation-introduction-to-kubernetes" target="_blank" rel="noopener noreferr"><img  width="300px" height="auto" SRC="../images/KubernetesPods.png" alt="K8s pod description."></a></p>
+                <p class="link"><a href="https://www.edx.org/learn/kubernetes/the-linux-foundation-introduction-to-kubernetes" target="_blank" rel="noopener noreferr">Linux Foundation Intro to Kubernetes</a></p></li>
+
+                <li><p><a href="https://wevote.us/" target="_blank" rel="noopener noreferr"><img width="300px" height="auto" SRC="../images/WeVoteElection.png" alt="We Vote website example screen."></a></p>
+                <p class="link"><a href="https://github.com/upluke/WeVoteServer/blob/campaignRetrieveTests/apis_v1/tests/test_views_campaign_retrieve.py" target="_blank" rel="noopener noreferr">We Vote Unit Test Repository</a></p></li>    
+
+                <li><p><a href="https://data.berkeley.edu/data-8x" target="_blank" rel="noopener noreferr"><img  width="300px" height="auto" SRC="../images/Data8xMap.png" alt="Map visualization example."></a></p>
+                <p class="link"><a href="https://data.berkeley.edu/data-8x" target="_blank" rel="noopener noreferr">UC Berkeley Data8x</a></p></li>
+
+                <li><p><iframe src="https://drive.google.com/file/d/14hwVACAfpF7aziS8u5pFOciXpiXfKhup/preview" width="300px" height="auto" frameborder="0" allow="autoplay"></iframe></p>
+                <p class="link"><a href="https://github.com/nirvanabear/code-horde/tree/master/cti" target="_blank" rel="noopener noreferr">Coding Challenges Repository</a></p></li>
+
+                <li><p><iframe width="300px" height="auto" src="https://www.youtube.com/embed/n7GVK17-SBs" title="CalTV Sports Highlight: Cal Football vs. Stanford" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>
+                <p class="link"><a href="https://www.youtube.com/watch?v=n7GVK17-SBs" target="_blank" rel="noopener noreferr">CalTV: Cal Football vs. Stanfurd</a></p></li>     
             </ul>
             <br>
         </article>
