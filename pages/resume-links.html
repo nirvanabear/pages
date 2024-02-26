@@ -20,12 +20,8 @@
         }
         li { margin-bottom: 30px; }
         .link { padding-inline-start: 15px; }
-        img { 
-            border: 1px solid #492f6f; 
-        }
-        li p iframe {
-            padding-inline-start: 10px;
-        }
+        img { border: 1px solid #492f6f; }
+        li p iframe { padding-inline-start: 10px; }
 
         .container {
             /* We first create a flex layout context */
@@ -45,7 +41,7 @@
     <script>
         // Navigation menu
         document.addEventListener("DOMContentLoaded", function () {
-            fetch('nav.html')
+            fetch('../main_nav.html')
             .then(res => res.text())
             .then(text => {
                 document.getElementById("nav_menu").innerHTML = text;
